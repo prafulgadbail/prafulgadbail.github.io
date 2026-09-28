@@ -1,699 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praful Gadbile | Portfolio</title>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- AOS Scroll Animations CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-
-    <style>
-        :root {
-            --bg-color: #080c14;
-            --card-bg: rgba(17, 25, 54, 0.7);
-            --border-color: rgba(0, 242, 254, 0.2);
-            --accent-color: #00f2fe;
-            --secondary-accent: #4facfe;
-            --text-color: #f1f5f9;
-            --text-muted: #94a3b8;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Glassmorphism Effect */
-        .glass {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(8, 12, 20, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-        }
-
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 28px;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-            text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
-        }
-
-        /* Hero Section */
-        section {
-            padding: 110px 0 60px;
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            min-height: 88vh;
-            gap: 50px;
-        }
-
-        .hero-content {
-            max-width: 620px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero-content h2 {
-            font-size: 1.6rem;
-            color: var(--accent-color);
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-
-        .hero-content p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 25px;
-        }
-
-        /* Small Animated Social Icons */
-        .social-row {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .icon-btn {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-color);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .icon-btn:hover {
-            transform: translateY(-5px) scale(1.1);
-            color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
-        }
-
-        .icon-whatsapp:hover { background: #25D366; border-color: #25D366; }
-        .icon-gmail:hover { background: #EA4335; border-color: #EA4335; }
-        .icon-linkedin:hover { background: #0A66C2; border-color: #0A66C2; }
-        .icon-github:hover { background: #333; border-color: #555; }
-
-        /* 3D Profile Image Floating Animation */
-        .profile-wrapper {
-            position: relative;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .profile-img-box {
-            width: 310px;
-            height: 310px;
-            border-radius: 50%;
-            padding: 6px;
-            background: linear-gradient(135deg, var(--accent-color), transparent, var(--secondary-accent));
-            box-shadow: 0 0 35px rgba(0, 242, 254, 0.25);
-        }
-
-        .profile-img-box img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            background: var(--bg-color);
-        }
-
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            font-size: 2.3rem;
-            margin-bottom: 50px;
-            font-weight: 700;
-            background: linear-gradient(45deg, #fff, var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Skills Layout Categorized */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-        }
-
-        .skill-card {
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-6px);
-            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
-        }
-
-        .skill-card h3 {
-            font-size: 1.15rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .tag {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--text-color);
-        }
-
-        /* Timeline Cards */
-        .timeline-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .timeline-card {
-            padding: 28px;
-        }
-
-        .timeline-card h3 {
-            font-size: 1.3rem;
-            color: #fff;
-        }
-
-        .company-tag {
-            color: var(--secondary-accent);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin: 5px 0 12px;
-        }
-
-        /* Detailed Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            padding: 30px;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-color);
-        }
-
-        .project-title {
-            font-size: 1.35rem;
-            color: #fff;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .project-desc {
-            color: var(--text-muted);
-            font-size: 0.92rem;
-            margin-bottom: 20px;
-        }
-
-        .pipeline-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .pipeline-title {
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .pipeline-details-flow {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .stage-card {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 242, 254, 0.15);
-            padding: 12px 16px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .stage-card:hover {
-            background: rgba(0, 242, 254, 0.08);
-            border-color: var(--accent-color);
-            transform: translateX(6px);
-        }
-
-        .stage-num {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--accent-color);
-            background: rgba(0, 242, 254, 0.1);
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 242, 254, 0.2);
-        }
-
-        .stage-info {
-            flex: 1;
-        }
-
-        .stage-info h4 {
-            font-size: 0.95rem;
-            color: #fff;
-            margin-bottom: 2px;
-        }
-
-        .stage-info p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-        }
-
-        .stage-tag {
-            font-size: 0.7rem;
-            background: rgba(255, 255, 255, 0.08);
-            color: var(--secondary-accent);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        .btn-github {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            background: rgba(0, 242, 254, 0.1);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.88rem;
-            transition: all 0.3s ease;
-        }
-
-        .btn-github:hover {
-            background: var(--accent-color);
-            color: #000;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
-        }
-
-        /* Contact Section */
-        .contact-box {
-            text-align: center;
-            padding: 50px 20px;
-            max-width: 650px;
-            margin: 0 auto;
-        }
-
-        @media (max-width: 768px) {
-            .hero { flex-direction: column-reverse; text-align: center; }
-            .social-row { justify-content: center; }
-            .projects-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Praful Gadbail | Cloud & DevOps Engineer</title>
+<meta name="description" content="Cloud & DevOps Engineer skilled in AWS, Terraform, Kubernetes, Jenkins and GitOps. Pune, India.">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1322;--bg2:#101c31;--line:#1f3050;--tx:#e6edf7;--mut:#8fa3c2;--cy:#3dd9eb;--am:#ffb84d}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 'Sora',system-ui,sans-serif;overflow-x:hidden}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+.mono{font-family:'IBM Plex Mono',monospace}
+.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+#boot{position:fixed;inset:0;background:#060c17;z-index:99;display:grid;place-items:center;transition:clip-path 1s cubic-bezier(.7,0,.2,1);clip-path:circle(150% at 50% 50%);cursor:pointer}
+#boot.done{clip-path:circle(0% at 50% 50%);pointer-events:none}
+#boot pre{font:14px/1.9 'IBM Plex Mono',monospace;color:var(--cy);min-width:min(460px,88vw)}
+#boot .ok{color:#5fe08f}#boot .dim{color:var(--mut)}
+.bar{height:3px;background:var(--line);margin-top:18px;border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cy),var(--am));transition:width 2.4s ease}
+nav{position:fixed;top:0;left:0;right:0;z-index:20;backdrop-filter:blur(12px);background:#0a1322cc;border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:58px}
+nav b{font-weight:800}nav b span{color:var(--cy)}
+nav ul{display:flex;gap:22px;list-style:none;font-size:14px;color:var(--mut)}
+nav ul a:hover{color:var(--cy)}
+@media(max-width:640px){nav ul{gap:12px;font-size:12px}nav b{display:none}}
+header{min-height:100vh;display:flex;align-items:center;padding-top:70px;position:relative}
+#net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+.hero{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.pic{order:-1;margin:auto}}
+h1{font-size:clamp(38px,6vw,68px);line-height:1.05;font-weight:800;letter-spacing:-1.5px}
+.cd{font-size:clamp(22px,3.4vw,36px);font-weight:800;margin:8px 0 4px;background:linear-gradient(90deg,var(--cy),var(--am));-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content}
+.role{font:500 16px 'IBM Plex Mono',monospace;color:var(--mut);margin:6px 0 14px;min-height:26px}
+.role:after{content:'▍';color:var(--cy);animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.hero p.d{color:var(--mut);max-width:520px}
+.btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.b{padding:11px 20px;border-radius:9px;font-weight:600;font-size:15px;border:1px solid var(--line);background:transparent;transition:.25s;display:inline-block}
+.b.p{background:var(--cy);color:#04202a;border-color:var(--cy)}
+.b.p:hover{box-shadow:0 0 28px #3dd9eb66;transform:translateY(-2px)}
+.b:not(.p):hover,.b.on{border-color:var(--cy);color:var(--cy)}
+.b.on{background:#3dd9eb14}
+.soc{display:flex;gap:12px;margin-top:22px}
+.pic{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;padding:5px;background:conic-gradient(from 0deg,var(--cy),var(--am),var(--cy));animation:spin 8s linear infinite}
+.pic>div{width:100%;height:100%;border-radius:50%;background:var(--bg2);overflow:hidden;display:grid;place-items:center;animation:spin 8s linear infinite reverse;font:800 64px 'Sora'}
+.pic img{width:100%;height:100%;object-fit:cover;object-position:center top}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stats{display:flex;gap:30px;margin-top:30px;flex-wrap:wrap}
+.stats div{font-size:13px;color:var(--mut)}.stats b{display:block;font-size:26px;color:var(--tx)}
+section{padding:90px 0}
+h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.8px;margin-bottom:34px}
+h2:after{content:'';display:block;width:56px;height:3px;background:var(--am);margin-top:10px;border-radius:2px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.rv.in{opacity:1;transform:none}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.sk{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .3s,transform .3s}
+.sk:hover{border-color:var(--cy);transform:translateY(-4px)}
+.sk h3{font-size:15px;margin-bottom:14px}
+.tag{display:inline-flex;align-items:center;gap:7px;font:12.5px 'IBM Plex Mono',monospace;border:1px solid var(--line);border-radius:8px;padding:4px 10px 4px 5px;margin:0 6px 8px 0;color:var(--tx);background:#0a1322;transition:.25s;opacity:0}
+.tag:hover{border-color:var(--am);transform:translateY(-3px)}
+.tag img,.tag .em{width:22px;height:22px;border-radius:6px;background:#eef3fb;padding:2px;display:grid;place-items:center;font-size:14px;line-height:1}
+.in .tag{animation:pop .5s both;animation-delay:calc(var(--i)*70ms)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.7)}to{opacity:1;transform:none}}
+.tl{position:relative;padding-left:34px}
+.tl:before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--line)}
+.tl .fill{position:absolute;left:5px;top:0;width:2px;height:0;background:linear-gradient(var(--cy),var(--am));box-shadow:0 0 12px var(--cy)}
+.job{position:relative;margin-bottom:38px;opacity:0;transform:translateX(-40px);transition:1s}
+.job.in{opacity:1;transform:none}
+.job:before{content:attr(data-e);position:absolute;left:-46px;top:0;width:24px;height:24px;border-radius:50%;background:var(--bg2);border:2px solid var(--cy);display:grid;place-items:center;font-size:12px;box-shadow:0 0 14px var(--cy)}
+.job h3{font-size:19px}.job .m{color:var(--am);font:13.5px 'IBM Plex Mono',monospace;margin:2px 0 10px}
+.job li{color:var(--mut);margin:0 0 8px 18px;font-size:15px}
+.proj{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:28px}
+.proj h3{font-size:22px;margin-bottom:6px}
+.proj .ts{margin:12px 0 4px}
+.proj ul{margin:8px 0 18px 18px;color:var(--mut);font-size:15px}.proj li{margin-bottom:6px}
+.pb{display:flex;gap:10px;flex-wrap:wrap}
+.hint{color:var(--mut);font:12.5px 'IBM Plex Mono',monospace;margin-top:12px}
+.dia{max-height:0;opacity:0;overflow:hidden;transition:max-height .7s,opacity .6s,margin .6s;background:#070e1b;border-radius:12px;margin-top:0}
+.dia.open{max-height:300px;opacity:1;margin-top:16px;border:1px solid var(--line)}
+.sc{overflow-x:auto;padding:12px}
+.dia svg{min-width:720px;width:100%;height:auto;display:block}
+.nd{opacity:0;transform-box:fill-box;transform-origin:center;animation:np .5s both}
+@keyframes np{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+.nd rect.n{fill:#0f1e38;stroke:var(--cy);stroke-width:1.4}
+.nd rect.lg{fill:#eef3fb}
+.fl{stroke:var(--cy);stroke-width:2;stroke-dasharray:5 5;opacity:0;animation:fin .4s forwards,dash 1s linear infinite}
+@keyframes fin{to{opacity:.8}}@keyframes dash{to{stroke-dashoffset:-10}}
+.dia text{fill:var(--tx);font:500 11px 'IBM Plex Mono',monospace;text-anchor:middle}
+.dia text.em{font-size:22px}
+.ct{display:flex;gap:26px;flex-wrap:wrap}
+.ci{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:14px;color:var(--mut);transition:.3s}
+.ci .ico{width:72px;height:72px;border-radius:50%;background:#eef3fb;display:grid;place-items:center;font-size:32px;box-shadow:0 0 0 0 #3dd9eb00;transition:.3s}
+.ci .ico img{width:40px;height:40px}
+.ci:hover{color:var(--am);transform:translateY(-6px)}
+.ci:hover .ico{box-shadow:0 0 0 6px #3dd9eb33,0 0 30px #3dd9eb66;transform:rotate(-8deg) scale(1.08)}
+.soc .ci .ico{width:44px;height:44px;font-size:20px}.soc .ci .ico img{width:24px;height:24px}.soc .ci em{display:none}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:30px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.job,.tag,.nd{opacity:1;transform:none}.fl{opacity:.8}}
+</style>
 </head>
-<body>
+<body class="lock">
+<div id="boot" title="Click to skip"><div><pre id="bt"></pre><div class="bar"><i id="bi"></i></div></div></div>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Portfolio</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+<nav><div class="wrap"><b>praful<span>@devops</span></b>
+<ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#exp">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
 
-    <!-- Hero Section -->
-    <section class="container hero" id="about">
-        <div class="hero-content" data-aos="fade-right">
-            <h1>Praful Gadbile</h1>
-            <h2>Cloud & DevOps Engineer</h2>
-            <p>DevOps Engineer with 2.5+ years of hands-on experience in cloud infrastructure, CI/CD automation, Infrastructure as Code (Terraform), and Kubernetes deployments across AWS, Azure, and GCP environments.</p>
-            
-            <!-- Social / Contact Icons -->
-            <div class="social-row">
-                <a href="https://wa.me/919000000000" target="_blank" class="icon-btn glass icon-whatsapp" title="WhatsApp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-                <a href="mailto:prafulgadbile@gmail.com" class="icon-btn glass icon-gmail" title="Email Me">
-                    <i class="fa-solid fa-envelope"></i>
-                </a>
-                <a href="https://linkedin.com/in/prafulgadbile" target="_blank" class="icon-btn glass icon-linkedin" title="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/prafulgadbile" target="_blank" class="icon-btn glass icon-github" title="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
-        </div>
+<header id="about"><canvas id="net"></canvas>
+<div class="wrap hero">
+ <div>
+  <p class="mono" style="color:var(--mut);font-size:14px;margin-bottom:8px">👋 Hi, I'm</p>
+  <h1>Praful Gadbail</h1>
+  <div class="cd">Cloud &amp; DevOps Engineer</div>
+  <div class="role" id="role"></div>
+  <p class="d">2.5+ years of experience in cloud infrastructure, CI/CD automation, Infrastructure as Code and Kubernetes deployments on AWS, Azure and GCP. Available for immediate joining.</p>
+  <div class="btns">
+   <a class="b p" href="assets/resume.pdf" download="Praful_Gadbail_Resume.pdf">⬇️ Download Resume</a>
+   <a class="b" href="#projects">🚀 View Projects</a>
+  </div>
+  <div class="soc" id="soc"></div>
+  <div class="stats"><div><b data-n="2.5" data-s="+">0</b>years experience</div><div><b data-n="5" data-s="+">0</b>Jenkins pipelines</div><div><b data-n="3">0</b>clouds: AWS, Azure, GCP</div><div><b data-n="10" data-s="+">0</b>Linux servers managed</div></div>
+ </div>
+ <div class="pic"><div><img src="assets/profile.jpg" alt="Praful Gadbail" onerror="ph(this)"></div></div>
+</div></header>
 
-        <div class="profile-wrapper" data-aos="fade-left">
-            <div class="profile-img-box">
-                <img src="profile.jpg" alt="Praful Gadbile">
-            </div>
-        </div>
-    </section>
+<section id="skills"><div class="wrap"><h2 class="rv">🧰 Technical skills</h2><div class="skills" id="sk"></div></div></section>
 
-    <!-- Skills Section Categorized -->
-    <section class="container" id="skills">
-        <h2 class="section-title" data-aos="fade-up">Technical Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-card glass" data-aos="zoom-in" data-aos-delay="100">
-                <h3><i class="fa-brands fa-aws"></i> Cloud Platforms</h3>
-                <div class="skill-tags">
-                    <span class="tag">AWS (EKS, EC2, S3, RDS)</span>
-                    <span class="tag">Microsoft Azure</span>
-                    <span class="tag">Google Cloud (GCP)</span>
-                </div>
-            </div>
+<section id="exp" style="background:var(--bg2)"><div class="wrap"><h2 class="rv">💼 Experience</h2><div class="tl" id="tl"><i class="fill" id="fill"></i>
+ <div class="job" data-e="🚀"><h3>DevOps Engineer Intern</h3><div class="m">Hisan Labs Pvt Ltd, Pune | 03/2026 - Present</div><ul>
+  <li>Provisioned AWS infrastructure with Terraform modules, remote state and environment-specific configs: VPC, subnets, NAT, EC2, ECR, IAM and EKS.</li>
+  <li>Built Jenkins declarative pipelines for 5+ Java microservices: Maven, SonarQube, Docker, ECR publishing and EKS deployment with rollout checks.</li>
+  <li>Deployed workloads on Amazon EKS with Helm, Ingress, ConfigMaps, Secrets and resource limits.</li>
+  <li>Set up IAM least-privilege access, Amazon RDS and MongoDB Atlas, and monitored systems with CloudWatch, Prometheus and Grafana.</li></ul></div>
+ <div class="job" data-e="🖥️"><h3>System Administrator</h3><div class="m">K12 Techno Services Pvt Ltd, Pune | 07/2023 - 09/2025</div><ul>
+  <li>Managed 10+ Ubuntu servers on AWS EC2: users, systemd services, disk usage, logs and troubleshooting.</li>
+  <li>Built multi-AZ AWS infrastructure with Terraform: VPC, subnets, route tables, IGW, NAT, EC2, S3.</li>
+  <li>Managed AWS IAM and Microsoft Entra ID; gave IT and network support to 1000+ users across India.</li>
+  <li>Monitored with CloudWatch and Datadog; automated routine tasks with Shell and Python.</li></ul></div>
+ <div class="job" data-e="🎓"><h3>B.Tech, Computer Science &amp; Engineering</h3><div class="m">Eklavya University, Damoh | 2021 - 2024</div></div>
+</div></div></section>
 
-            <div class="skill-card glass" data-aos="zoom-in" data-aos-delay="200">
-                <h3><i class="fa-solid fa-dharmachakra"></i> Containers & K8s</h3>
-                <div class="skill-tags">
-                    <span class="tag">Docker</span>
-                    <span class="tag">Kubernetes (EKS/AKS)</span>
-                    <span class="tag">Helm Charts</span>
-                </div>
-            </div>
+<section id="projects"><div class="wrap"><h2 class="rv">🛠️ Projects</h2>
+ <div class="proj rv"><h3>Three-Tier AWS EKS Deployment with Jenkins CI/CD</h3>
+  <div class="ts" id="t1"></div>
+  <ul><li>Java Spring Boot backend on Amazon EKS; React frontend on S3 with CloudFront.</li>
+  <li>Separate Jenkins pipelines for frontend and backend, with SonarQube quality gate, ECR publishing and Kubernetes deploys.</li>
+  <li>HTTPS via AWS Load Balancer Controller, Route 53 and ACM; credentials via Secrets Manager and External Secrets Operator.</li>
+  <li>Prometheus, Grafana, HPA, Cluster Autoscaler and EBS CSI for monitoring, autoscaling and storage.</li></ul>
+  <div class="pb" id="p1b"></div><div class="hint">👆 Click a button to open its live diagram</div>
+  <div class="dia" id="p1d"><div class="sc"><svg></svg></div></div></div>
+ <div class="proj rv"><h3>Microservices GitOps Deployment with GitHub Actions &amp; Argo CD</h3>
+  <div class="ts" id="t2"></div>
+  <ul><li>Multi-stage Dockerfiles for Java microservices; versioned images pushed to Docker Hub.</li>
+  <li>GitHub Actions CI: checkout, Maven build, tests, image build, tagging and publish.</li>
+  <li>Argo CD keeps the Kind cluster in sync with Git; rolling updates and resource limits configured.</li></ul>
+  <div class="pb" id="p2b"></div><div class="hint">👆 Click to open the live diagram</div>
+  <div class="dia" id="p2d"><div class="sc"><svg></svg></div></div></div>
+</div></section>
 
-            <div class="skill-card glass" data-aos="zoom-in" data-aos-delay="300">
-                <h3><i class="fa-solid fa-code"></i> IaC & Automation</h3>
-                <div class="skill-tags">
-                    <span class="tag">Terraform</span>
-                    <span class="tag">Ansible</span>
-                    <span class="tag">Shell Scripting</span>
-                </div>
-            </div>
+<section id="contact" style="background:var(--bg2)"><div class="wrap"><h2 class="rv">📬 Let's connect</h2><div class="ct rv" id="ct"></div></div></section>
+<footer>© Praful Gadbail | Pune, India</footer>
 
-            <div class="skill-card glass" data-aos="zoom-in" data-aos-delay="400">
-                <h3><i class="fa-solid fa-arrows-spin"></i> CI/CD & Monitoring</h3>
-                <div class="skill-tags">
-                    <span class="tag">Jenkins</span>
-                    <span class="tag">ArgoCD (GitOps)</span>
-                    <span class="tag">GitHub Actions</span>
-                    <span class="tag">Prometheus & Grafana</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Experience Section -->
-    <section class="container" id="experience">
-        <h2 class="section-title" data-aos="fade-up">Professional Experience</h2>
-        <div class="timeline-grid">
-            <div class="timeline-card glass" data-aos="fade-right">
-                <h3>DevOps Engineer Intern</h3>
-                <div class="company-tag">Hisan Labs Pvt Ltd, Pune | 03/2026 – Present</div>
-                <p>• Provisioned AWS infrastructure using Terraform modules (VPC, EKS, EC2, RDS, ECR).</p>
-                <p>• Built Jenkins Declarative CI/CD pipelines for 5+ Java microservices.</p>
-                <p>• Monitored workloads using CloudWatch, Prometheus, and Grafana.</p>
-            </div>
-
-            <div class="timeline-card glass" data-aos="fade-left">
-                <h3>System Administrator</h3>
-                <div class="company-tag">K12 Techno Services Pvt Ltd, Pune | 07/2023 – 09/2025</div>
-                <p>• Managed 10+ Ubuntu/Linux servers on AWS EC2, handling systemd services.</p>
-                <p>• Provisioned multi-AZ AWS infrastructure using Terraform.</p>
-                <p>• Managed IAM and Microsoft Entra ID (Azure AD) user access and security permissions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="container" id="education">
-        <h2 class="section-title" data-aos="fade-up">Education</h2>
-        <div class="timeline-grid">
-            <div class="timeline-card glass" data-aos="flip-left">
-                <h3>B.Tech – Computer Science & Engineering</h3>
-                <div class="company-tag">Eklavya University, Damoh | 2021 – 2024</div>
-                <p>Graduated with core expertise in Cloud Computing, Computer Networks, and Software Engineering.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects Section with Full Stage Details -->
-    <section class="container" id="projects">
-        <h2 class="section-title" data-aos="fade-up">Production Grade CI/CD Architecture</h2>
-        <div class="projects-grid">
-            
-            <!-- PROJECT 1: AWS EKS & Enterprise Jenkins Pipeline -->
-            <div class="project-card glass" data-aos="fade-up">
-                <h3 class="project-title"><i class="fa-solid fa-cloud"></i> Three-Tier AWS EKS & Jenkins Pipeline</h3>
-                <div class="project-desc">
-                    Fully automated Enterprise CI/CD pipeline built for microservices architecture on Amazon EKS. Features automated static analysis, vulnerability scanning, and active container orchestration.
-                </div>
-
-                <!-- Detailed CI/CD Pipeline Stages -->
-                <div class="pipeline-box">
-                    <div class="pipeline-title">Detailed Jenkins CI/CD Pipeline Stages</div>
-                    
-                    <div class="pipeline-details-flow">
-                        
-                        <div class="stage-card">
-                            <div class="stage-num">01</div>
-                            <div class="stage-info">
-                                <h4>Source & SCM</h4>
-                                <p>Git Webhook trigger on master branch push.</p>
-                                <span class="stage-tag">GitHub / Git</span>
-                            </div>
-                        </div>
-
-                        <div class="stage-card">
-                            <div class="stage-num">02</div>
-                            <div class="stage-info">
-                                <h4>Code Quality & SAST</h4>
-                                <p>SonarQube analysis with strict Quality Gates.</p>
-                                <span class="stage-tag">SonarQube / Maven</span>
-                            </div>
-                        </div>
-
-                        <div class="stage-card">
-                            <div class="stage-num">03</div>
-                            <div class="stage-info">
-                                <h4>Security Scan & Build</h4>
-                                <p>Trivy image scanning & multi-stage Docker build.</p>
-                                <span class="stage-tag">Docker / AWS ECR / Trivy</span>
-                            </div>
-                        </div>
-
-                        <div class="stage-card">
-                            <div class="stage-num">04</div>
-                            <div class="stage-info">
-                                <h4>K8s Orchestration</h4>
-                                <p>Rolling update deployment to AWS EKS Cluster.</p>
-                                <span class="stage-tag">AWS EKS / Helm / kubectl</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="skill-tags" style="margin-bottom: 20px;">
-                    <span class="tag">AWS EKS</span>
-                    <span class="tag">Jenkins Pipeline</span>
-                    <span class="tag">SonarQube</span>
-                    <span class="tag">Docker ECR</span>
-                    <span class="tag">Prometheus & Grafana</span>
-                </div>
-
-                <a href="https://github.com/prafulgadbile" target="_blank" class="btn-github">
-                    <i class="fa-brands fa-github"></i> View Pipeline Code on GitHub
-                </a>
-            </div>
-
-            <!-- PROJECT 2: GitOps with ArgoCD & Terraform -->
-            <div class="project-card glass" data-aos="fade-up" data-aos-delay="200">
-                <h3 class="project-title"><i class="fa-solid fa-diagram-project"></i> GitOps Microservices Pipeline (ArgoCD & Terraform)</h3>
-                <div class="project-desc">
-                    Production-ready GitOps workflow separating Application Code and Infrastructure Configs. Automated sync and self-healing deployments using ArgoCD and Terraform IaC.
-                </div>
-
-                <!-- Detailed GitOps Pipeline Stages -->
-                <div class="pipeline-box">
-                    <div class="pipeline-title">Declarative GitOps & IaC Workflow</div>
-                    
-                    <div class="pipeline-details-flow">
-                        
-                        <div class="stage-card">
-                            <div class="stage-num">01</div>
-                            <div class="stage-info">
-                                <h4>Infra Provisioning</h4>
-                                <p>Automated VPC, Subnets, and EKS creation via Modules.</p>
-                                <span class="stage-tag">Terraform IaC</span>
-                            </div>
-                        </div>
-
-                        <div class="stage-card">
-                            <div class="stage-num">02</div>
-                            <div class="stage-info">
-                                <h4>CI Workflow</h4>
-                                <p>Automated testing & container push via GitHub Actions.</p>
-                                <span class="stage-tag">GitHub Actions</span>
-                            </div>
-                        </div>
-
-                        <div class="stage-card">
-                            <div class="stage-num">03</div>
-                            <div class="stage-info">
-                                <h4>GitOps Manifest Sync</h4>
-                                <p>Auto-updating Helm chart tags in K8s Manifest Repo.</p>
-                                <span class="stage-tag">Helm / Git Repos</span>
-                            </div>
-                        </div>
-
-                        <div class="stage-card">
-                            <div class="stage-num">04</div>
-                            <div class="stage-info">
-                                <h4>Continuous Delivery</h4>
-                                <p>ArgoCD automatically syncs target state to cluster.</p>
-                                <span class="stage-tag">ArgoCD / K8s</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="skill-tags">
-                    <span class="tag">Terraform</span>
-                    <span class="tag">ArgoCD</span>
-                    <span class="tag">GitHub Actions</span>
-                    <span class="tag">Helm Charts</span>
-                    <span class="tag">Kubernetes</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="container" id="contact">
-        <div class="contact-box glass" data-aos="zoom-in">
-            <h2 class="section-title" style="margin-bottom: 15px;">Get In Touch</h2>
-            <p style="color: var(--text-muted); margin-bottom: 25px;">I am available for immediate joining. Feel free to reach out via WhatsApp, Email, or LinkedIn!</p>
-            <div class="social-row" style="justify-content: center;">
-                <a href="https://wa.me/919000000000" target="_blank" class="icon-btn glass icon-whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="mailto:prafulgadbile@gmail.com" class="icon-btn glass icon-gmail" title="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/prafulgadbile" target="_blank" class="icon-btn glass icon-linkedin" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- AOS Animation Library JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        // Initialize Scroll Animations
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    </script>
+<script>
+const D='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
+// ===== EDIT HERE: contact + project links =====
+const C=[['✉️','Email','mailto:praful.gadbail01@gmail.com'],['📞','Call','tel:+918087696782'],['linkedin','LinkedIn','https://linkedin.com/in/prafulgadbail'],['github','GitHub','https://github.com/prafulgadbail']];
+const GH={p1:'https://github.com/prafulgadbail/three-tier-student-registration-app',p2:''}; // p2: paste GitOps repo link
+// ==============================================
+const isL=i=>/^[a-z0-9]+$/.test(i);
+const ic=(i,c)=>isL(i)?`<img data-i="${i}" src="${D}${i}/${i}-original.svg" alt="" onerror="fb(this)">`:`<span class="em">${i}</span>`;
+function fb(e){const k=+e.dataset.k||0,s=['-plain','-original-wordmark','-plain-wordmark'],i=e.dataset.i;if(k<3){e.dataset.k=k+1;const u=D+i+'/'+i+s[k]+'.svg';e.tagName=='IMG'?e.src=u:e.setAttribute('href',u)}else e.remove()}
+function ph(e){const k=+e.dataset.k||0,s=['assets/profile.png','assets/profile.jpeg'];if(k<2){e.dataset.k=k+1;e.src=s[k]}else e.parentNode.textContent='PG'}
+// boot
+const L=['<span class="dim">$</span> init praful-portfolio','<span class="ok">✔</span> terraform apply ... complete','<span class="ok">✔</span> eks cluster ... ready','<span class="ok">✔</span> argocd sync ... healthy','<span class="ok">✔</span> pipeline ... passing','<span class="dim">$</span> kubectl rollout status portfolio'];
+const bt=document.getElementById('bt'),boot=document.getElementById('boot');let bi=0,ended=0;
+function end(){if(ended)return;ended=1;boot.classList.add('done');document.body.classList.remove('lock');counters()}
+(function step(){if(bi<L.length){bt.innerHTML+=L[bi++]+'\n';setTimeout(step,340)}else setTimeout(end,500)})();
+requestAnimationFrame(()=>document.getElementById('bi').style.width='100%');boot.onclick=end;
+// typing
+const R=['AWS | Terraform | Kubernetes','Jenkins | GitHub Actions | Argo CD','Building reliable, automated cloud systems'];let r=0,c=0,d=0;const el=document.getElementById('role');
+(function ty(){const s=R[r];c+=d?-1:1;el.textContent=s.slice(0,c);let t=d?30:70;if(!d&&c==s.length){d=1;t=1500}else if(d&&!c){d=0;r=(r+1)%R.length;t=300}setTimeout(ty,t)})();
+function counters(){document.querySelectorAll('[data-n]').forEach(e=>{const n=+e.dataset.n,t0=performance.now();(function f(t){const p=Math.min((t-t0)/1400,1);e.textContent=(n%1?(n*p).toFixed(1):Math.round(n*p))+(p==1?(e.dataset.s||''):'');if(p<1)requestAnimationFrame(f)})(t0)})}
+// contact + social icons
+const ci=C.map(([i,l,u])=>`<a class="ci" href="${u}" title="${l}" ${u.startsWith('http')?'target="_blank" rel="noopener"':''}><span class="ico">${isL(i)?`<img data-i="${i}" src="${D}${i}/${i}-original.svg" alt="${l}" onerror="fb(this)">`:i}</span><em>${l}</em></a>`).join('');
+document.getElementById('ct').innerHTML=ci;document.getElementById('soc').innerHTML=ci;
+// skills
+const S=[['☁️ Cloud Platforms',[['AWS','amazonwebservices'],['Azure','azure'],['GCP','googlecloud']]],
+['🟠 AWS Services',[['EC2','🖥️'],['VPC','🌐'],['IAM','🔐'],['EKS','kubernetes'],['ECR','📦'],['S3','🪣'],['ALB','⚖️'],['Auto Scaling','📈'],['Route 53','🧭'],['CloudFront','⚡'],['ACM','🔒'],['Secrets Manager','🔑']]],
+['🔷 Azure Services',[['VNet','🌐'],['NSG','🛡️'],['Entra ID','🪪'],['AKS','kubernetes'],['ACR','📦']]],
+['🟢 GCP Services',[['VPC','🌐'],['Firewall Rules','🧱'],['GKE','kubernetes'],['Artifact Registry','📦']]],
+['🏗️ Infrastructure as Code',[['Terraform','terraform'],['Modules','🧩'],['Remote Backend','🗄️'],['State Mgmt','📋']]],
+['🔁 CI/CD & GitOps',[['Jenkins','jenkins'],['GitHub Actions','githubactions'],['Argo CD','argocd'],['Pipelines','🚀']]],
+['🐳 Containers & Kubernetes',[['Docker','docker'],['Kubernetes','kubernetes'],['Helm','helm'],['Compose','🧱'],['Ingress','🚪'],['HPA','📈'],['kubectl','⌨️']]],
+['📊 Monitoring',[['CloudWatch','👁️'],['Prometheus','prometheus'],['Grafana','grafana'],['Datadog','datadog']]],
+['🛠️ Build & Quality',[['Maven','maven'],['npm','npm'],['SonarQube','sonarqube'],['Git','git'],['GitHub','github']]],
+['🐧 Linux & Scripting',[['Linux','linux'],['Ubuntu','ubuntu'],['Bash','bash'],['Python','python']]],
+['🌍 Networking',[['TCP/IP','🔌'],['DNS','🧭'],['HTTPS','🔒'],['SSH','🖧'],['Load Balancing','⚖️']]],
+['🗃️ Databases',[['RDS PostgreSQL','postgresql'],['MariaDB','mariadb'],['DynamoDB','⚡'],['MongoDB Atlas','mongodb']]]];
+document.getElementById('sk').innerHTML=S.map(([k,v])=>`<div class="sk rv"><h3>${k}</h3>${v.map(([n,i],x)=>`<span class="tag" style="--i:${x}">${ic(i)}${n}</span>`).join('')}</div>`).join('');
+const T={t1:[['AWS EKS','kubernetes'],['Docker','docker'],['ECR','📦'],['Jenkins','jenkins'],['Maven','maven'],['SonarQube','sonarqube'],['S3','🪣'],['CloudFront','⚡'],['Route 53','🧭'],['ACM','🔒'],['Secrets Manager','🔑'],['Prometheus','prometheus'],['Grafana','grafana']],t2:[['Docker','docker'],['GitHub Actions','githubactions'],['Kubernetes','kubernetes'],['Argo CD','argocd'],['Helm','helm'],['GitOps','🔄']]};
+for(const k in T)document.getElementById(k).innerHTML=T[k].map(([n,i])=>`<span class="tag" style="opacity:1">${ic(i)}${n}</span>`).join('');
+// diagrams
+const U=['👨‍💻','Developer'];
+const PR={p1:[['🎨 Frontend CI/CD',[['Developer','👨‍💻'],['GitHub','github'],['Jenkins','jenkins'],['npm Build','npm'],['S3 Bucket','🪣'],['CloudFront','⚡']]],
+['⚙️ Backend CI/CD',[['Developer','👨‍💻'],['GitHub','github'],['Jenkins','jenkins'],['Maven','maven'],['SonarQube','sonarqube'],['Docker','docker'],['ECR','📦'],['EKS Deploy','kubernetes']]],
+['🏛️ Architecture',[['Users','🌍'],['Route 53','🧭'],['ALB + ACM','⚖️'],['EKS Pods','kubernetes'],['Ext Secrets','🔑'],['Database','🗄️']]]],
+p2:[['🔄 GitOps Flow',[['Developer','👨‍💻'],['GitHub','github'],['GitHub Actions','githubactions'],['Docker Hub','docker'],['Argo CD','argocd'],['Kind Cluster','kubernetes']]]]};
+function dia(s,nodes){const w=104,g=36,W=nodes.length*(w+g)-g+20,y=52,d=.4;s.setAttribute('viewBox',`0 0 ${W} 110`);let h='';
+nodes.forEach(([l,i],k)=>{const x=10+k*(w+g),t=k*d,cx=x+w/2;
+if(k)h+=`<line class="fl" style="animation-delay:${t-.2}s,0s" x1="${x-g+2}" y1="${y}" x2="${x-2}" y2="${y}"/>`;
+h+=`<g class="nd" style="animation-delay:${t}s"><rect class="n" x="${x}" y="${y-32}" width="${w}" height="66" rx="12"/>`;
+h+=isL(i)?`<rect class="lg" x="${cx-17}" y="${y-27}" width="34" height="34" rx="8"/><image data-i="${i}" href="${D}${i}/${i}-original.svg" x="${cx-13}" y="${y-23}" width="26" height="26" onerror="fb(this)"/>`:`<text class="em" x="${cx}" y="${y-2}">${i}</text>`;
+h+=`<text x="${cx}" y="${y+26}">${l}</text></g>`});
+const n=nodes.length;h+=`<circle r="6" fill="#ffb84d" opacity="0"><set attributeName="opacity" to="1" begin="${n*d}s" fill="freeze"/><animateMotion begin="${n*d}s" dur="${n*.8}s" repeatCount="indefinite" path="M10,${y} H${W-10}"/></circle>`;s.innerHTML=h}
+for(const p in PR){const bx=document.getElementById(p+'b'),box=document.getElementById(p+'d');
+bx.innerHTML=PR[p].map(([t],k)=>`<button class="b" data-k="${k}">${t}</button>`).join('')+(GH[p]?`<a class="b" href="${GH[p]}" target="_blank" rel="noopener">🔗 GitHub</a>`:'');
+bx.querySelectorAll('button').forEach(b=>b.onclick=()=>{const on=b.classList.contains('on');bx.querySelectorAll('button').forEach(x=>x.classList.remove('on'));if(on){box.classList.remove('open');return}b.classList.add('on');box.classList.add('open');dia(box.querySelector('svg'),PR[p][b.dataset.k][1])})}
+// reveal + timeline flow
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});
+document.querySelectorAll('.rv,.job').forEach(e=>io.observe(e));
+const tl=document.getElementById('tl'),fl=document.getElementById('fill');
+function tp(){const b=tl.getBoundingClientRect();fl.style.height=Math.max(0,Math.min(b.height,innerHeight*.65-b.top))+'px'}
+addEventListener('scroll',tp,{passive:true});tp();
+// network bg
+const cv=document.getElementById('net'),cx=cv.getContext('2d');let P=[];
+function rs(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;P=Array.from({length:Math.min(55,cv.width/22)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}
+rs();addEventListener('resize',rs);
+(function an(){cx.clearRect(0,0,cv.width,cv.height);P.forEach((p,i)=>{p.x=(p.x+p.vx+cv.width)%cv.width;p.y=(p.y+p.vy+cv.height)%cv.height;cx.fillStyle='#3dd9eb';cx.fillRect(p.x,p.y,2,2);for(let j=i+1;j<P.length;j++){const q=P[j],dd=Math.hypot(p.x-q.x,p.y-q.y);if(dd<130){cx.strokeStyle=`rgba(61,217,235,${.25*(1-dd/130)})`;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}});requestAnimationFrame(an)})();
+</script>
 </body>
 </html>
