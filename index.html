@@ -11,8 +11,9 @@
     <!-- FontAwesome & DevIcons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    
-    <!-- AOS Animation Library -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
@@ -27,15 +28,14 @@
             background: rgba(17, 24, 39, 0.7);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
         
         .glass-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 25px -8px rgba(59, 130, 246, 0.25);
         }
 
-        /* Animated Gradient Text */
         .animated-gradient-text {
             background: linear-gradient(90deg, #3b82f6, #06b6d4, #6366f1, #3b82f6);
             background-size: 200% auto;
@@ -48,57 +48,36 @@
             to { background-position: 200% center; }
         }
 
-        /* Hover & Click Animated Expandable Dropdown */
-        .expandable-card {
-            position: relative;
-            cursor: pointer;
+        .skill-badge {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
+        }
+        .skill-badge:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            background: rgba(30, 58, 138, 0.3);
         }
 
-        .expand-content {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.3s ease;
-        }
-
-        .expandable-card:hover .expand-content,
-        .expandable-card.active .expand-content {
-            max-height: 800px;
-            opacity: 1;
-            margin-top: 1rem;
-        }
-
-        .expandable-card:hover .chevron-icon,
-        .expandable-card.active .chevron-icon {
-            transform: rotate(180deg);
-            color: #3b82f6;
-        }
-
-        .chevron-icon {
-            transition: transform 0.3s ease;
-        }
-
-        /* Glowing Avatar Frame */
         .glow-avatar-wrapper {
             position: relative;
         }
         .glow-avatar-wrapper::before {
             content: '';
             position: absolute;
-            top: -4px; left: -4px; right: -4px; bottom: -4px;
-            background: linear-gradient(45deg, #3b82f6, #06b6d4, #6366f1, #3b82f6);
+            top: -3px; left: -3px; right: -3px; bottom: -3px;
+            background: linear-gradient(45deg, #3b82f6, #06b6d4, #6366f1);
             border-radius: 1.25rem;
             z-index: -1;
-            filter: blur(10px);
+            filter: blur(8px);
             opacity: 0.6;
             animation: glowRotate 6s linear infinite;
         }
         @keyframes glowRotate {
-            0% { filter: blur(10px) hue-rotate(0deg); }
-            100% { filter: blur(10px) hue-rotate(360deg); }
+            0% { filter: blur(8px) hue-rotate(0deg); }
+            100% { filter: blur(8px) hue-rotate(360deg); }
         }
 
-        /* Modal Blur */
         .modal-backdrop {
             background: rgba(3, 7, 18, 0.85);
             backdrop-filter: blur(8px);
@@ -107,16 +86,15 @@
 </head>
 <body class="antialiased selection:bg-blue-500 selection:text-white">
 
-    <!-- Header Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-slate-800/80 px-6 py-4">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-slate-800/80 px-6 py-3">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="#about" class="text-xl font-bold tracking-wider text-blue-400">
+            <a href="#about" class="text-lg font-bold tracking-wider text-blue-400">
                 Praful <span class="text-white">Gadbail</span>
             </a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#cloud-skills" class="hover:text-blue-400 transition">Cloud Stack</a>
-                <a href="#devops-skills" class="hover:text-blue-400 transition">DevOps Stack</a>
+                <a href="#skills" class="hover:text-blue-400 transition">Skills</a>
                 <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
                 <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
             </div>
@@ -124,28 +102,27 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="min-h-screen flex items-center justify-center pt-28 pb-16 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section id="about" class="pt-28 pb-12 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
             
             <div data-aos="fade-right">
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 text-white">Praful Gadbail</h1>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-1 text-white">Praful Gadbail</h1>
                 
-                <!-- BADA & ANIMATED HEADING -->
-                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-wide animated-gradient-text">
+                <h2 class="text-2xl md:text-3xl font-black mb-4 tracking-wide animated-gradient-text">
                     CLOUD & DEVOPS ENGINEER
                 </h2>
                 
-                <p class="text-slate-400 text-base md:text-lg leading-relaxed mb-8">
-                    2.5+ years of experience in AWS Cloud Infrastructure, Infrastructure as Code (Terraform & Ansible), Container Orchestration (Kubernetes & EKS), Automated CI/CD Pipelines (Jenkins & ArgoCD GitOps), and Prometheus/Grafana Observability.
+                <p class="text-slate-400 text-sm md:text-base leading-relaxed mb-6">
+                    Cloud & DevOps Engineer with 2.5+ years of experience in AWS infrastructure management, CI/CD automation, Kubernetes deployment, and Infrastructure as Code using Terraform and Ansible.
                 </p>
                 
-                <div class="flex flex-wrap gap-4 mb-8">
-                    <a href="Praful_Gadbail_DevOps_Engineer_Resume_28-09-26.pdf" download class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 font-medium transition flex items-center gap-2 shadow-lg shadow-blue-600/30">
+                <div class="flex flex-wrap gap-4 mb-6">
+                    <a href="Praful_Gadbail_DevOps_Engineer_Resume_28-09-26.pdf" download class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 font-medium text-sm transition flex items-center gap-2 shadow-lg shadow-blue-600/30">
                         <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
 
-                <div class="flex items-center gap-6 text-2xl text-slate-400">
+                <div class="flex items-center gap-5 text-xl text-slate-400">
                     <a href="https://github.com/prafulgadbail" target="_blank" class="hover:text-white transition transform hover:scale-110" title="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
@@ -155,7 +132,7 @@
                     <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prafulgadbail@gmail.com" target="_blank" class="hover:text-red-400 transition transform hover:scale-110" title="Direct Gmail">
                         <i class="fas fa-envelope text-red-500"></i>
                     </a>
-                    <span class="flex items-center text-sm gap-2 text-slate-400 border-l border-slate-800 pl-4">
+                    <span class="flex items-center text-xs gap-1.5 text-slate-400 border-l border-slate-800 pl-4">
                         <i class="fas fa-map-marker-alt text-red-500"></i> Pune, MH
                     </span>
                 </div>
@@ -164,8 +141,8 @@
             <!-- Profile Photo -->
             <div class="flex justify-center" data-aos="fade-left">
                 <div class="glow-avatar-wrapper">
-                    <div class="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden glass-card border border-slate-700">
-                        <img src="profile.jpg" alt="Praful Gadbail" class="w-full h-full object-cover object-center hover:scale-105 transition duration-500">
+                    <div class="relative w-56 h-64 md:w-64 md:h-72 rounded-2xl overflow-hidden glass-card border border-slate-700">
+                        <img src="profile.jpg" alt="Praful Gadbail" class="w-full h-full object-cover object-center">
                     </div>
                 </div>
             </div>
@@ -173,389 +150,269 @@
         </div>
     </section>
 
-    <!-- SECTION 1: CLOUD PROVIDERS -->
-    <section id="cloud-skills" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Cloud Platforms Stack</h2>
-            <p class="text-slate-400">Hover or click on any cloud provider to view complete managed services</p>
-        </div>
-
-        <div class="space-y-4">
-            <!-- AWS CARD -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-4">
-                        <i class="fab fa-aws text-4xl text-amber-500"></i>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Amazon Web Services (AWS)</h3>
-                            <p class="text-xs text-slate-400">Hover / Click to view AWS Services</p>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400 text-lg"></i>
-                </div>
-
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-server mr-1"></i> Compute & Containers</h4>
-                            <ul class="text-sm space-y-1.5 text-slate-300">
-                                <li>• AWS EC2 (Instance Types, SG)</li>
-                                <li>• AWS EKS (Managed Kubernetes)</li>
-                                <li>• AWS ECS & Lambda</li>
-                                <li>• Auto Scaling Groups & Launch Templates</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-network-wired mr-1"></i> VPC & Security</h4>
-                            <ul class="text-sm space-y-1.5 text-slate-300">
-                                <li>• VPC, Subnets, NAT Gateways</li>
-                                <li>• ALB / NLB Load Balancers</li>
-                                <li>• IAM Roles, OIDC, Service Accounts</li>
-                                <li>• Route 53 & KMS Secrets Manager</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-database mr-1"></i> Storage & Ops</h4>
-                            <ul class="text-sm space-y-1.5 text-slate-300">
-                                <li>• Amazon S3 Buckets & Lifecycle</li>
-                                <li>• EBS / EFS Persistent Storage</li>
-                                <li>• Amazon RDS (PostgreSQL/MySQL)</li>
-                                <li>• Amazon ECR Container Registry</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AZURE CARD -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-4">
-                        <i class="devicon-azure-plain colored text-4xl"></i>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Microsoft Azure</h3>
-                            <p class="text-xs text-slate-400">Hover / Click to view Azure Services</p>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400 text-lg"></i>
-                </div>
-
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">Compute & AKS</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Azure Virtual Machines</li>
-                                <li>• Azure Kubernetes Service (AKS)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">VNet & Identity</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Virtual Networks (VNet)</li>
-                                <li>• Azure Active Directory (Entra ID)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">Storage</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Azure Blob Storage & ACR</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: DEVOPS STACK -->
-    <section id="devops-skills" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">DevOps & Automation Stack</h2>
-            <p class="text-slate-400">Hover or click on any tool card for details</p>
+    <!-- SKILLS SECTION (COMPACT & LOGO BASED ACCORDING TO RESUME) -->
+    <section id="skills" class="py-12 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-8" data-aos="fade-up">
+            <h2 class="text-2xl font-extrabold text-white mb-1">Technical Skills</h2>
+            <p class="text-xs text-slate-400">Core technologies & AWS services mapped from resume</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
 
-            <!-- KUBERNETES -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-kubernetes-plain colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">Kubernetes Orchestration</h3>
-                            <p class="text-xs text-slate-400">Deployments, Pods, Ingress & HPA</p>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
+            <!-- AWS Services Card -->
+            <div class="glass-card p-5 rounded-xl" data-aos="fade-up">
+                <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+                    <i class="fab fa-aws text-2xl text-amber-500"></i>
+                    <h3 class="font-bold text-white text-base">AWS Cloud Services</h3>
                 </div>
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>Deployments & StatefulSets:</b> Stateless and Stateful workloads.</li>
-                        <li>• <b>HPA (Horizontal Pod Autoscaler):</b> CPU/Memory scaling.</li>
-                        <li>• <b>Ingress Controllers:</b> NGINX Ingress, Path Routing & TLS.</li>
-                    </ul>
+                <div class="flex flex-wrap gap-2">
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-ec2" class="text-base"></iconify-icon> EC2
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-s3" class="text-base"></iconify-icon> S3
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-iam" class="text-base"></iconify-icon> IAM
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-eks" class="text-base"></iconify-icon> EKS
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-vpc" class="text-base"></iconify-icon> VPC
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-ecr" class="text-base"></iconify-icon> ECR
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-rds" class="text-base"></iconify-icon> RDS
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:aws-route53" class="text-base"></iconify-icon> Route 53
+                    </div>
                 </div>
             </div>
 
-            <!-- JENKINS -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-jenkins-line colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">Jenkins Automation Engine</h3>
-                            <p class="text-xs text-slate-400">Controller-Agent Architecture</p>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
+            <!-- DevOps & Automation Card -->
+            <div class="glass-card p-5 rounded-xl" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+                    <i class="fas fa-cogs text-2xl text-blue-400"></i>
+                    <h3 class="font-bold text-white text-base">DevOps & Automation</h3>
                 </div>
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>Architecture:</b> Distributed Controller & Agent Node setup.</li>
-                        <li>• <b>Jenkinsfile:</b> Declarative & Scripted Pipelines.</li>
-                        <li>• <b>Security:</b> SonarQube Code Scanning & Trivy Image Scans.</li>
-                    </ul>
+                <div class="flex flex-wrap gap-2">
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-docker-plain colored text-base"></i> Docker
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-kubernetes-plain colored text-base"></i> Kubernetes
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-jenkins-line colored text-base"></i> Jenkins
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-terraform-plain colored text-base"></i> Terraform
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-ansible-plain colored text-base"></i> Ansible
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-githubactions-plain colored text-base"></i> GitHub Actions
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-argocd-plain colored text-base"></i> ArgoCD
+                    </div>
                 </div>
             </div>
 
-            <!-- TERRAFORM & ANSIBLE -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-terraform-plain colored text-3xl"></i>
-                        <i class="devicon-ansible-plain colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">IaC: Terraform & Ansible</h3>
-                            <p class="text-xs text-slate-400">Modules, Remote Backend & Playbooks</p>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
+            <!-- Monitoring & Logging Card -->
+            <div class="glass-card p-5 rounded-xl" data-aos="fade-up" data-aos-delay="200">
+                <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+                    <i class="fas fa-chart-line text-2xl text-amber-400"></i>
+                    <h3 class="font-bold text-white text-base">Monitoring & Observability</h3>
                 </div>
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>Terraform Modules:</b> VPC, EKS, EC2, RDS & S3 infrastructure.</li>
-                        <li>• <b>State Management:</b> S3 State Storage with DynamoDB State Locking.</li>
-                    </ul>
+                <div class="flex flex-wrap gap-2">
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-prometheus-original colored text-base"></i> Prometheus
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-grafana-original colored text-base"></i> Grafana
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <iconify-icon icon="logos:sonarqube-icon" class="text-base"></iconify-icon> SonarQube
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="fas fa-shield-alt text-emerald-400"></i> Trivy Scan
+                    </div>
                 </div>
             </div>
 
-            <!-- ARGOCD & DOCKER HUB -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-argocd-plain colored text-3xl"></i>
-                        <i class="devicon-docker-plain colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">ArgoCD & Docker Hub</h3>
-                            <p class="text-xs text-slate-400">GitOps CD & Image Registries</p>
-                        </div>
+            <!-- Tools & OS Card -->
+            <div class="glass-card p-5 rounded-xl" data-aos="fade-up" data-aos-delay="300">
+                <div class="flex items-center gap-2 mb-4 border-b border-slate-800 pb-2">
+                    <i class="fas fa-terminal text-2xl text-emerald-400"></i>
+                    <h3 class="font-bold text-white text-base">Build, OS & Version Control</h3>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-git-plain colored text-base"></i> Git & GitHub
                     </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
-                </div>
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>GitOps Paradigm:</b> Git repository as Single Source of Truth.</li>
-                        <li>• <b>Docker Hub:</b> Automated Image Push & Container Repositories.</li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION 3: PROJECTS (CLEAN CARDS WITH POPUP MODAL) -->
-    <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Featured Live Projects</h2>
-            <p class="text-slate-400">Click on any project to open its interactive SVG Architecture & Flow</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-
-            <!-- PROJECT 1 CARD -->
-            <div class="glass-card p-6 rounded-2xl border-t-4 border-t-blue-500 flex flex-col justify-between" data-aos="fade-up">
-                <div>
-                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Project 01</span>
-                    <h3 class="text-xl font-bold text-white mt-1 mb-3">3-Tier Web Application on AWS EKS Cluster</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        Production-ready 3-tier application deployed on AWS EKS with Terraform IaC, Jenkins CI/CD, SonarQube, Trivy, and Prometheus/Grafana monitoring.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-300 mb-6">
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">AWS EKS</span>
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Terraform</span>
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Jenkins</span>
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">AWS ECR</span>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-linux-plain colored text-base"></i> Linux / Bash
+                    </div>
+                    <div class="skill-badge px-3 py-1.5 rounded-lg flex items-center gap-2 text-xs">
+                        <i class="devicon-maven-plain colored text-base"></i> Maven
                     </div>
                 </div>
-
-                <button onclick="openModal('project1-modal')" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20">
-                    <i class="fas fa-sitemap"></i> View Project 1 Architecture & Flow
-                </button>
-            </div>
-
-            <!-- PROJECT 2 CARD (Docker Hub & Kubernetes) -->
-            <div class="glass-card p-6 rounded-2xl border-t-4 border-t-emerald-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                <div>
-                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Project 02</span>
-                    <h3 class="text-xl font-bold text-white mt-1 mb-3">GitOps Pipeline with Docker Hub & Kubernetes</h3>
-                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                        Automated GitOps deployment workflow using GitHub Actions, Docker Hub container registry, ArgoCD GitOps operator, and Kubernetes Cluster.
-                    </p>
-                    <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-300 mb-6">
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Kubernetes</span>
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Docker Hub</span>
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">ArgoCD</span>
-                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">GitHub Actions</span>
-                    </div>
-                </div>
-
-                <button onclick="openModal('project2-modal')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
-                    <i class="fas fa-sitemap"></i> View Project 2 Architecture & Flow
-                </button>
             </div>
 
         </div>
     </section>
 
-    <!-- PROJECT 1 POPUP MODAL -->
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="py-12 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-8" data-aos="fade-up">
+            <h2 class="text-2xl font-extrabold text-white mb-1">Featured Projects</h2>
+            <p class="text-xs text-slate-400">Click to view pipeline flow & GitHub repository</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+            <!-- PROJECT 1 -->
+            <div class="glass-card p-5 rounded-xl border-t-4 border-t-blue-500 flex flex-col justify-between" data-aos="fade-up">
+                <div>
+                    <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Project 01</span>
+                    <h3 class="text-lg font-bold text-white mt-1 mb-2">3-Tier Web Application on AWS EKS</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                        Automated CI/CD pipeline deploying 3-tier microservice on EKS using Jenkins, SonarQube, Trivy, Docker Hub & Helm.
+                    </p>
+                </div>
+
+                <button onclick="openModal('project1-modal')" class="w-full py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-lg transition flex items-center justify-center gap-2">
+                    <i class="fas fa-sitemap"></i> View Details & GitHub
+                </button>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="glass-card p-5 rounded-xl border-t-4 border-t-emerald-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <span class="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">Project 02</span>
+                    <h3 class="text-lg font-bold text-white mt-1 mb-2">GitOps Pipeline with Docker Hub & Kubernetes</h3>
+                    <p class="text-slate-300 text-xs leading-relaxed mb-4">
+                        GitOps automated workflow using GitHub Actions, Docker Hub container registry, and ArgoCD on Kubernetes.
+                    </p>
+                </div>
+
+                <button onclick="openModal('project2-modal')" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs rounded-lg transition flex items-center justify-center gap-2">
+                    <i class="fas fa-sitemap"></i> View Details & GitHub
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PROJECT 1 MODAL -->
     <div id="project1-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-backdrop p-4 overflow-y-auto">
-        <div class="glass-card max-w-4xl w-full rounded-2xl p-6 md:p-8 relative border border-blue-500/30 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal('project1-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+        <div class="glass-card max-w-3xl w-full rounded-xl p-6 relative border border-blue-500/30">
+            <button onclick="closeModal('project1-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
                 <i class="fas fa-times"></i>
             </button>
 
-            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Project 01 Details</span>
-            <h3 class="text-2xl font-bold text-white mt-1 mb-4">AWS EKS 3-Tier Enterprise Pipeline Architecture</h3>
-
-            <p class="text-slate-300 text-sm mb-6">
-                This project establishes an end-to-end automated deployment pipeline. When developer pushes code to GitHub, Jenkins triggers build jobs, runs SonarQube quality analysis, performs Trivy vulnerability scans on Docker images, pushes the secure image to Amazon ECR, and deploys to AWS EKS via Helm charts.
+            <h3 class="text-xl font-bold text-white mb-2">AWS EKS 3-Tier Enterprise Pipeline</h3>
+            <p class="text-slate-300 text-xs mb-4">
+                Automated continuous deployment workflow integrating SonarQube code inspection, Trivy image vulnerability scanning, ECR/Docker Hub storage, and Kubernetes deployment.
             </p>
 
-            <!-- REAL FLOW DIAGRAM (Interactive SVG Layout) -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
-                <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-6 flex items-center gap-2">
-                    <i class="fas fa-project-diagram"></i> Real Live CI/CD Pipeline Flow
-                </h4>
-
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
-                    <!-- Step 1 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-blue-500/40 w-full md:w-1/5">
-                        <i class="fab fa-github text-3xl text-white mb-2"></i>
-                        <p class="text-xs font-bold text-white">1. Developer Push</p>
-                        <p class="text-[10px] text-slate-400">GitHub Commit</p>
+            <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 mb-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-center text-xs">
+                    <div class="bg-slate-900 p-2.5 rounded border border-blue-500/40 w-full">
+                        <p class="font-bold text-white">1. Developer</p>
+                        <p class="text-[10px] text-slate-400">Git Push</p>
                     </div>
-                    <i class="fas fa-arrow-right text-blue-500 hidden md:block text-lg"></i>
-                    <i class="fas fa-arrow-down text-blue-500 md:hidden text-lg"></i>
-
-                    <!-- Step 2 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-amber-500/40 w-full md:w-1/5">
-                        <i class="fab fa-jenkins text-3xl text-amber-500 mb-2"></i>
-                        <p class="text-xs font-bold text-white">2. Jenkins CI</p>
+                    <i class="fas fa-arrow-right text-blue-500 hidden md:block"></i>
+                    <div class="bg-slate-900 p-2.5 rounded border border-amber-500/40 w-full">
+                        <p class="font-bold text-white">2. Jenkins CI</p>
                         <p class="text-[10px] text-slate-400">SonarQube & Trivy</p>
                     </div>
-                    <i class="fas fa-arrow-right text-blue-500 hidden md:block text-lg"></i>
-                    <i class="fas fa-arrow-down text-blue-500 md:hidden text-lg"></i>
-
-                    <!-- Step 3 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-cyan-500/40 w-full md:w-1/5">
-                        <i class="fab fa-docker text-3xl text-cyan-400 mb-2"></i>
-                        <p class="text-xs font-bold text-white">3. AWS ECR</p>
-                        <p class="text-[10px] text-slate-400">Image Registry</p>
+                    <i class="fas fa-arrow-right text-blue-500 hidden md:block"></i>
+                    <div class="bg-slate-900 p-2.5 rounded border border-cyan-500/40 w-full">
+                        <p class="font-bold text-white">3. Docker Hub / ECR</p>
+                        <p class="text-[10px] text-slate-400">Push Image</p>
                     </div>
-                    <i class="fas fa-arrow-right text-blue-500 hidden md:block text-lg"></i>
-                    <i class="fas fa-arrow-down text-blue-500 md:hidden text-lg"></i>
-
-                    <!-- Step 4 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-purple-500/40 w-full md:w-1/5">
-                        <i class="fas fa-dharmachakra text-3xl text-purple-400 mb-2"></i>
-                        <p class="text-xs font-bold text-white">4. AWS EKS</p>
-                        <p class="text-[10px] text-slate-400">Kubernetes Pods</p>
+                    <i class="fas fa-arrow-right text-blue-500 hidden md:block"></i>
+                    <div class="bg-slate-900 p-2.5 rounded border border-purple-500/40 w-full">
+                        <p class="font-bold text-white">4. AWS EKS</p>
+                        <p class="text-[10px] text-slate-400">Deploy Pods</p>
                     </div>
                 </div>
             </div>
 
-            <div class="flex justify-end">
-                <button onclick="closeModal('project1-modal')" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm">Close</button>
+            <!-- GitHub Project Button -->
+            <div class="flex justify-between items-center">
+                <a href="https://github.com/prafulgadbail" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-semibold flex items-center gap-2 border border-slate-700">
+                    <i class="fab fa-github text-sm"></i> Open Project Code on GitHub
+                </a>
+                <button onclick="closeModal('project1-modal')" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold">Close</button>
             </div>
         </div>
     </div>
 
-    <!-- PROJECT 2 POPUP MODAL (Docker Hub + Kubernetes Flow) -->
+    <!-- PROJECT 2 MODAL -->
     <div id="project2-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-backdrop p-4 overflow-y-auto">
-        <div class="glass-card max-w-4xl w-full rounded-2xl p-6 md:p-8 relative border border-emerald-500/30 max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal('project2-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+        <div class="glass-card max-w-3xl w-full rounded-xl p-6 relative border border-emerald-500/30">
+            <button onclick="closeModal('project2-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
                 <i class="fas fa-times"></i>
             </button>
 
-            <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Project 02 Details</span>
-            <h3 class="text-2xl font-bold text-white mt-1 mb-4">GitOps Pipeline with Docker Hub & Kubernetes</h3>
-
-            <p class="text-slate-300 text-sm mb-6">
-                Automated continuous delivery workflow. GitHub Actions builds the Docker image and pushes it directly to **Docker Hub**. Then, GitHub Actions updates the Helm values in the Manifest Repository. **ArgoCD** running inside the Kubernetes cluster detects drift and automatically syncs the live cluster with zero downtime.
+            <h3 class="text-xl font-bold text-white mb-2">GitOps Pipeline with Docker Hub & Kubernetes</h3>
+            <p class="text-slate-300 text-xs mb-4">
+                GitHub Actions triggers container build and pushes to Docker Hub. ArgoCD detects manifest updates and synchronizes Kubernetes workloads automatically.
             </p>
 
-            <!-- REAL FLOW DIAGRAM (Interactive SVG Layout) -->
-            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
-                <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-6 flex items-center gap-2">
-                    <i class="fas fa-project-diagram"></i> Real Live GitOps Flow (Docker Hub & K8s)
-                </h4>
-
-                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
-                    <!-- Step 1 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-emerald-500/40 w-full md:w-1/5">
-                        <i class="devicon-githubactions-plain colored text-3xl mb-2"></i>
-                        <p class="text-xs font-bold text-white">1. GitHub Actions</p>
+            <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 mb-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-center text-xs">
+                    <div class="bg-slate-900 p-2.5 rounded border border-emerald-500/40 w-full">
+                        <p class="font-bold text-white">1. GitHub Actions</p>
                         <p class="text-[10px] text-slate-400">Build Container</p>
                     </div>
-                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block text-lg"></i>
-                    <i class="fas fa-arrow-down text-emerald-500 md:hidden text-lg"></i>
-
-                    <!-- Step 2 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-blue-500/40 w-full md:w-1/5">
-                        <i class="fab fa-docker text-3xl text-blue-400 mb-2"></i>
-                        <p class="text-xs font-bold text-white">2. Docker Hub</p>
+                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block"></i>
+                    <div class="bg-slate-900 p-2.5 rounded border border-blue-500/40 w-full">
+                        <p class="font-bold text-white">2. Docker Hub</p>
                         <p class="text-[10px] text-slate-400">Push Image Tag</p>
                     </div>
-                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block text-lg"></i>
-                    <i class="fas fa-arrow-down text-emerald-500 md:hidden text-lg"></i>
-
-                    <!-- Step 3 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-red-500/40 w-full md:w-1/5">
-                        <i class="devicon-argocd-plain colored text-3xl mb-2"></i>
-                        <p class="text-xs font-bold text-white">3. ArgoCD</p>
-                        <p class="text-[10px] text-slate-400">Detect Drift</p>
+                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block"></i>
+                    <div class="bg-slate-900 p-2.5 rounded border border-red-500/40 w-full">
+                        <p class="font-bold text-white">3. ArgoCD</p>
+                        <p class="text-[10px] text-slate-400">Sync Manifests</p>
                     </div>
-                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block text-lg"></i>
-                    <i class="fas fa-arrow-down text-emerald-500 md:hidden text-lg"></i>
-
-                    <!-- Step 4 -->
-                    <div class="bg-slate-900 p-4 rounded-xl border border-cyan-500/40 w-full md:w-1/5">
-                        <i class="devicon-kubernetes-plain colored text-3xl mb-2"></i>
-                        <p class="text-xs font-bold text-white">4. Kubernetes</p>
-                        <p class="text-[10px] text-slate-400">Zero Downtime Sync</p>
+                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block"></i>
+                    <div class="bg-slate-900 p-2.5 rounded border border-cyan-500/40 w-full">
+                        <p class="font-bold text-white">4. Kubernetes</p>
+                        <p class="text-[10px] text-slate-400">Cluster Sync</p>
                     </div>
                 </div>
             </div>
 
-            <div class="flex justify-end">
-                <button onclick="closeModal('project2-modal')" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm">Close</button>
+            <!-- GitHub Project Button -->
+            <div class="flex justify-between items-center">
+                <a href="https://github.com/prafulgadbail" target="_blank" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-semibold flex items-center gap-2 border border-slate-700">
+                    <i class="fab fa-github text-sm"></i> Open Project Code on GitHub
+                </a>
+                <button onclick="closeModal('project2-modal')" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold">Close</button>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer id="contact" class="py-12 border-t border-slate-800 text-center text-slate-400 text-sm">
+    <footer id="contact" class="py-8 border-t border-slate-800 text-center text-slate-400 text-xs">
         <div class="max-w-6xl mx-auto px-6">
-            <p class="mb-2">Designed & Engineered by <span class="text-white font-semibold">Praful Gadbail</span></p>
-            <p class="text-xs text-slate-500">Hosted Live on PrafulGadbail.online</p>
+            <p>Designed & Engineered by <span class="text-white font-semibold">Praful Gadbail</span></p>
         </div>
     </footer>
 
-    <!-- JS Scripts for Modal Popups & Animations -->
+    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
+        AOS.init({ duration: 600, once: true });
 
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
