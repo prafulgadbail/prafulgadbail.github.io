@@ -1,600 +1,558 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praful Gadbail | Cloud & DevOps Engineer</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- FontAwesome & DevIcons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <title>Praful Gadbail | DevOps Engineer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <style>
+        :root {
+            --bg-color: #0a0f1d;
+            --card-bg: #111936;
+            --accent-color: #00f2fe;
+            --secondary-accent: #4facfe;
+            --text-color: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #0b0f19;
-            color: #f3f4f6;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            overflow-x: hidden;
-        }
-        
-        .glass-card {
-            background: rgba(17, 24, 39, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .glass-card:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
-        /* Accordion / Dropdown Styling */
-        .skill-accordion-header {
-            cursor: pointer;
-            user-select: none;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        .skill-accordion-content {
-            max-height: 0;
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 15, 29, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section Setup */
+        section {
+            padding: 90px 0 40px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 85vh;
+            gap: 40px;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent));
+            color: #0a0f1d;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .profile-img-container {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 242, 254, 0.25);
             overflow: hidden;
-            transition: max-height 0.4s ease-out, opacity 0.3s ease-out, padding 0.3s ease;
-            opacity: 0;
+            flex-shrink: 0;
         }
 
-        .skill-accordion-content.active {
-            max-height: 1200px;
-            opacity: 1;
-            padding-top: 1rem;
+        .profile-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .arrow-icon {
-            transition: transform 0.3s ease;
+        /* Cards Grid */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
         }
 
-        .arrow-icon.active {
-            transform: rotate(180deg);
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
         }
 
-        /* Glowing Avatar Border */
-        .glow-avatar-wrapper {
+        .card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .card .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .card ul {
+            padding-left: 18px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill-badge i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .skill-badge h4 {
+            font-size: 0.95rem;
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .project-about {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Pipeline Visual Flow */
+        .pipeline-container {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .pipeline-title {
+            font-size: 0.75rem;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: relative;
         }
-        .glow-avatar-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -4px; left: -4px; right: -4px; bottom: -4px;
-            background: linear-gradient(45deg, #3b82f6, #06b6d4, #6366f1, #3b82f6);
-            border-radius: 1.25rem;
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0.65;
-            animation: glowRotate 6s linear infinite;
-        }
-        @keyframes glowRotate {
-            0% { filter: blur(10px) hue-rotate(0deg); }
-            100% { filter: blur(10px) hue-rotate(360deg); }
+
+        .pipeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            z-index: 1;
         }
 
-        /* Flow Animation for Modals */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; transform: scale(0.98); }
-            50% { opacity: 0.9; transform: scale(1.02); }
+        .pipeline-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
         }
-        .animated-node {
-            animation: pulseGlow 2.5s infinite ease-in-out;
+
+        .pipeline-line {
+            position: absolute;
+            top: 17px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 0;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tech-badge {
+            background: rgba(79, 172, 254, 0.1);
+            color: var(--secondary-accent);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(79, 172, 254, 0.2);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-btns { justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white">
+<body>
 
     <!-- Header Navigation -->
-    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-slate-800/80 px-6 py-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="#about" class="text-xl font-bold tracking-wider text-blue-400">
-                Praful <span class="text-white">Gadbail</span>
-            </a>
-            <div class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#about" class="hover:text-blue-400 transition">About</a>
-                <a href="#cloud-skills" class="hover:text-blue-400 transition">Cloud Matrix</a>
-                <a href="#devops-skills" class="hover:text-blue-400 transition">DevOps & K8s</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Featured Projects</a>
-                <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
-            </div>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Praful.DevOps</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="about" class="min-h-screen flex items-center justify-center pt-28 pb-16 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section class="container hero" id="about">
+        <div class="hero-content">
+            <h1>Praful Gadbail</h1>
+            <h2>DevOps Engineer | AWS, Kubernetes & CI/CD</h2>
+            <p>DevOps Engineer with 2.5+ years of hands-on experience in cloud infrastructure, CI/CD automation, Infrastructure as Code (Terraform), and Kubernetes deployments across AWS, Azure, and GCP environments.</p>
+            <div class="hero-btns">
+                <a href="https://wa.me/918087696782" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Direct</a>
+                <a href="mailto:praful.gadbail01@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Email Me</a>
+            </div>
+        </div>
+        <div class="profile-img-container">
+            <img src="profile.jpg" alt="Praful Gadbail">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="container" id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-badge"><i class="fa-brands fa-aws"></i><h4>AWS Cloud</h4></div>
+            <div class="skill-badge"><i class="fa-solid fa-dharmachakra"></i><h4>Kubernetes (EKS/AKS)</h4></div>
+            <div class="skill-badge"><i class="fa-brands fa-docker"></i><h4>Docker Container</h4></div>
+            <div class="skill-badge"><i class="fa-solid fa-code"></i><h4>Terraform IaC</h4></div>
+            <div class="skill-badge"><i class="fa-brands fa-jenkins"></i><h4>Jenkins Pipeline</h4></div>
+            <div class="skill-badge"><i class="fa-brands fa-github"></i><h4>GitHub Actions & Argo CD</h4></div>
+            <div class="skill-badge"><i class="fa-solid fa-chart-line"></i><h4>Prometheus & Grafana</h4></div>
+            <div class="skill-badge"><i class="fa-brands fa-linux"></i><h4>Linux & Shell Scripting</h4></div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="container" id="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <h3>DevOps Engineer Intern</h3>
+                <div class="subtitle">Hisan Labs Pvt Ltd, Pune | 03/2026 – Present</div>
+                <ul>
+                    <li>Provisioned AWS infrastructure using Terraform modules (VPC, EKS, EC2, RDS, ECR, IAM).</li>
+                    <li>Built Jenkins Declarative CI/CD pipelines for 5+ Java microservices (SonarQube, Docker, ECR, EKS).</li>
+                    <li>Deployed and managed Kubernetes workloads using Helm, Services, Ingress, and ConfigMaps.</li>
+                    <li>Monitored workloads using CloudWatch, Prometheus, Grafana, and kubectl logs.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>System Administrator</h3>
+                <div class="subtitle">K12 Techno Services Pvt Ltd, Pune | 07/2023 – 09/2025</div>
+                <ul>
+                    <li>Managed 10+ Ubuntu/Linux servers on AWS EC2, handling systemd services and health monitoring.</li>
+                    <li>Provisioned multi-AZ AWS infrastructure using Terraform (VPC, Subnets, NAT, S3, Security Groups).</li>
+                    <li>Managed IAM & Microsoft Entra ID (Azure AD) user access and security permissions.</li>
+                    <li>Monitored AWS & Linux using CloudWatch and Datadog; automated tasks via Python & Shell.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="container" id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <h3>B.Tech – Computer Science & Engineering</h3>
+                <div class="subtitle">Eklavya University, Damoh | 2021 – 2024</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Graduated with core expertise in Cloud Computing, Computer Networks, and Software Engineering.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="container" id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
             
-            <div data-aos="fade-right">
-                <span class="inline-block py-1 px-3 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-xs font-semibold mb-4">
-                    🚀 Cloud & DevOps Specialist
-                </span>
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-2">Praful Gadbail</h1>
-                <h2 class="text-2xl font-semibold text-blue-400 mb-6">Cloud & DevOps Engineer</h2>
-                
-                <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                    2.5+ years of experience in Multi-Tier Cloud Infrastructure (AWS/Azure/GCP), Infrastructure as Code (Terraform & Ansible), Container Orchestration (EKS/Kubernetes), CI/CD Automation (Jenkins & ArgoCD GitOps), and Prometheus/Grafana Monitoring.
-                </p>
-                
-                <div class="flex flex-wrap gap-4 mb-8">
-                    <a href="Praful_Gadbail_DevOps_Engineer_Resume_28-09-26.pdf" download class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 font-medium transition flex items-center gap-2 shadow-lg shadow-blue-600/30">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
+            <!-- Project 1 (With GitHub Link) -->
+            <div class="project-card">
+                <h3 class="project-title"><i class="fa-solid fa-cloud"></i> Three-Tier AWS EKS Deployment</h3>
+                <div class="project-about">
+                    <strong>About Project:</strong> Deployed a scalable three-tier application on Amazon EKS with Java Spring Boot backend containerized using Docker/ECR and React frontend on S3/CloudFront. Features HTTPS via Route 53 & ACM, External Secrets Operator, Prometheus & Grafana monitoring, and HPA autoscaling.
                 </div>
 
-                <div class="flex items-center gap-6 text-2xl text-slate-400">
-                    <a href="https://github.com/prafulgadbail" target="_blank" class="hover:text-white transition transform hover:scale-110" title="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com/in/prafulgadbail" target="_blank" class="hover:text-blue-400 transition transform hover:scale-110" title="LinkedIn">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=prafulgadbail@gmail.com" target="_blank" class="hover:text-red-400 transition transform hover:scale-110" title="Direct Gmail">
-                        <i class="fas fa-envelope text-red-500"></i>
-                    </a>
-                    <span class="flex items-center text-sm gap-2 text-slate-400 border-l border-slate-800 pl-4">
-                        <i class="fas fa-map-marker-alt text-red-500"></i> Pune, MH
-                    </span>
-                </div>
-            </div>
-
-            <!-- Avatar -->
-            <div class="flex justify-center" data-aos="fade-left">
-                <div class="glow-avatar-wrapper">
-                    <div class="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden glass-card border border-slate-700">
-                        <img src="profile.jpg" alt="Praful Gadbail" class="w-full h-full object-cover object-center hover:scale-105 transition duration-500">
+                <!-- Pipeline Flow -->
+                <div class="pipeline-container">
+                    <div class="pipeline-title">LIVE JENKINS CI/CD FLOW</div>
+                    <div class="pipeline-flow">
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-brands fa-jenkins"></i></div><span>Jenkins</span></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-solid fa-vial"></i></div><span>SonarQube</span></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-brands fa-docker"></i></div><span>Docker/ECR</span></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-solid fa-dharmachakra"></i></div><span>AWS EKS</span></div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
-
-    <!-- SECTION 1: CLOUD PROVIDERS INTERACTIVE MATRIX -->
-    <section id="cloud-skills" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Cloud Platforms Matrix</h2>
-            <p class="text-slate-400">Click on any provider to expand core infrastructure services</p>
-        </div>
-
-        <div class="space-y-4">
-
-            <!-- AWS DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-up">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('aws-content', 'aws-arrow')">
-                    <div class="flex items-center gap-4">
-                        <i class="fab fa-aws text-4xl text-amber-500"></i>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Amazon Web Services (AWS)</h3>
-                            <p class="text-xs text-slate-400">Compute, VPC Networking, Security, EKS & Storage Services</p>
-                        </div>
-                    </div>
-                    <i id="aws-arrow" class="fas fa-chevron-down arrow-icon text-slate-400 text-lg"></i>
+                <div class="tech-stack">
+                    <span class="tech-badge">AWS EKS</span>
+                    <span class="tech-badge">Jenkins</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">SonarQube</span>
+                    <span class="tech-badge">Prometheus</span>
                 </div>
 
-                <div id="aws-content" class="skill-accordion-content border-t border-slate-800/80 mt-4">
-                    <div class="grid md:grid-cols-3 gap-6 pt-2">
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-server mr-1"></i> Compute & Container</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• AWS EC2 (Instance Types, AMIs)</li>
-                                <li>• EKS (Elastic Kubernetes Service)</li>
-                                <li>• ECS (Elastic Container Service)</li>
-                                <li>• AWS Lambda (Serverless)</li>
-                                <li>• Auto Scaling Groups & Launch Templates</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-network-wired mr-1"></i> Networking & Security</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• VPC, Subnets, Route Tables & NAT</li>
-                                <li>• Application / Network Load Balancer (ALB)</li>
-                                <li>• IAM Roles, Service Accounts & Policies</li>
-                                <li>• Route 53 (DNS Management)</li>
-                                <li>• AWS Secrets Manager & Security Groups</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-database mr-1"></i> Storage & CDN</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• S3 Bucket Policies & Static Hosting</li>
-                                <li>• CloudFront CDN Distribution</li>
-                                <li>• EBS / EFS Persistent Storage</li>
-                                <li>• RDS (MySQL/MariaDB Databases)</li>
-                                <li>• CloudWatch Alarms & ECR Registry</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- AZURE DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('azure-content', 'azure-arrow')">
-                    <div class="flex items-center gap-4">
-                        <i class="devicon-azure-plain colored text-4xl"></i>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Microsoft Azure</h3>
-                            <p class="text-xs text-slate-400">AKS, Virtual Networks & Entra ID Security</p>
-                        </div>
-                    </div>
-                    <i id="azure-arrow" class="fas fa-chevron-down arrow-icon text-slate-400 text-lg"></i>
-                </div>
-
-                <div id="azure-content" class="skill-accordion-content border-t border-slate-800/80 mt-4">
-                    <div class="grid md:grid-cols-3 gap-6 pt-2">
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase tracking-wider">Compute & AKS</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Azure Virtual Machines (VMs)</li>
-                                <li>• Azure Kubernetes Service (AKS)</li>
-                                <li>• Virtual Machine Scale Sets (VMSS)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase tracking-wider">Networking & Identity</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Virtual Networks (VNet) & Peering</li>
-                                <li>• Azure Active Directory (Entra ID)</li>
-                                <li>• Network Security Groups (NSG)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase tracking-wider">Storage & ACR</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Azure Blob Storage</li>
-                                <li>• Azure Container Registry (ACR)</li>
-                                <li>• Azure DevOps Pipelines</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GCP DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('gcp-content', 'gcp-arrow')">
-                    <div class="flex items-center gap-4">
-                        <i class="devicon-googlecloud-plain colored text-4xl"></i>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Google Cloud Platform (GCP)</h3>
-                            <p class="text-xs text-slate-400">GKE Kubernetes Orchestration & Cloud Storage</p>
-                        </div>
-                    </div>
-                    <i id="gcp-arrow" class="fas fa-chevron-down arrow-icon text-slate-400 text-lg"></i>
-                </div>
-
-                <div id="gcp-content" class="skill-accordion-content border-t border-slate-800/80 mt-4">
-                    <div class="grid md:grid-cols-3 gap-6 pt-2">
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-red-400 mb-2 text-sm uppercase tracking-wider">GCP Compute</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Compute Engine (VM instances)</li>
-                                <li>• Google Kubernetes Engine (GKE Autopilot)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-red-400 mb-2 text-sm uppercase tracking-wider">Networking & IAM</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• VPC Networks & Firewall Rules</li>
-                                <li>• GCP IAM Roles & Service Accounts</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-red-400 mb-2 text-sm uppercase tracking-wider">Storage & Artifacts</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Google Cloud Storage (GCS)</li>
-                                <li>• Artifact Registry</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION 2: DEVOPS & KUBERNETES DEEP-DIVE -->
-    <section id="devops-skills" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">DevOps & Orchestration Deep Dive</h2>
-            <p class="text-slate-400">Click to explore core concepts & tooling architecture</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-
-            <!-- KUBERNETES DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-right">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('k8s-content', 'k8s-arrow')">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-kubernetes-plain colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">Kubernetes Architecture</h3>
-                            <p class="text-xs text-slate-400">Click to reveal objects & ingress controllers</p>
-                        </div>
-                    </div>
-                    <i id="k8s-arrow" class="fas fa-chevron-down arrow-icon text-slate-400"></i>
-                </div>
-
-                <div id="k8s-content" class="skill-accordion-content border-t border-slate-800 mt-4">
-                    <div class="space-y-2 pt-2 text-sm text-slate-300">
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> <b>Deployments & StatefulSets:</b> Stateless & Persistent workload management.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> <b>HPA (Horizontal Pod Autoscaler):</b> CPU/Memory metric-based auto-scaling.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> <b>Ingress Controllers:</b> NGINX Ingress, Route Rules & SSL Cert-Manager.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> <b>Services:</b> ClusterIP, NodePort, LoadBalancer & CoreDNS.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> <b>Storage:</b> Persistent Volumes (PV), PVC, StorageClasses & EBS CSI Driver.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-blue-400 text-xs"></i> <b>Config Management:</b> ConfigMaps, Secrets, External Secrets Operator & Reloader.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- JENKINS DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-left">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('jenkins-content', 'jenkins-arrow')">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-jenkins-line colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">Jenkins Automation Engine</h3>
-                            <p class="text-xs text-slate-400">Click to expand Controller/Agent setup</p>
-                        </div>
-                    </div>
-                    <i id="jenkins-arrow" class="fas fa-chevron-down arrow-icon text-slate-400"></i>
-                </div>
-
-                <div id="jenkins-content" class="skill-accordion-content border-t border-slate-800 mt-4">
-                    <div class="space-y-2 pt-2 text-sm text-slate-300">
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> <b>Architecture:</b> Jenkins Controller - Distributed Agent/Node setup.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> <b>Jenkinsfile:</b> Declarative Multi-stage Pipeline code.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> <b>Security Scans:</b> SonarQube Code Quality Gates & Trivy Container Scan.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> <b>Credentials:</b> SSH Keys, API Tokens & AWS Credential Binding.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-amber-400 text-xs"></i> <b>Triggers:</b> GitHub Poll SCM, Webhooks & Shared Libraries.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TERRAFORM & ANSIBLE DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-right" data-aos-delay="100">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('iac-content', 'iac-arrow')">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-terraform-plain colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">IaC: Terraform & Ansible</h3>
-                            <p class="text-xs text-slate-400">Click to view State Locking & Playbooks</p>
-                        </div>
-                    </div>
-                    <i id="iac-arrow" class="fas fa-chevron-down arrow-icon text-slate-400"></i>
-                </div>
-
-                <div id="iac-content" class="skill-accordion-content border-t border-slate-800 mt-4">
-                    <div class="space-y-2 pt-2 text-sm text-slate-300">
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <b>Terraform Modules:</b> Modular infrastructure code for VPC, EKS, EC2 & S3.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <b>Remote Backend:</b> AWS S3 State Storage with DynamoDB State Locking.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <b>Ansible Playbooks:</b> Automated OS Patching & Package Configuration.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-purple-400 text-xs"></i> <b>Dynamic Inventory:</b> AWS EC2 Dynamic Inventory integration.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- GITOPS ARGOCD DROPDOWN -->
-            <div class="glass-card rounded-2xl p-6" data-aos="fade-left" data-aos-delay="100">
-                <div class="skill-accordion-header flex justify-between items-center" onclick="toggleDropdown('argocd-content', 'argocd-arrow')">
-                    <div class="flex items-center gap-3">
-                        <i class="devicon-argocd-plain colored text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-lg text-white">ArgoCD & GitOps Workflow</h3>
-                            <p class="text-xs text-slate-400">Click to view Helm Charts & Auto-Sync</p>
-                        </div>
-                    </div>
-                    <i id="argocd-arrow" class="fas fa-chevron-down arrow-icon text-slate-400"></i>
-                </div>
-
-                <div id="argocd-content" class="skill-accordion-content border-t border-slate-800 mt-4">
-                    <div class="space-y-2 pt-2 text-sm text-slate-300">
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> <b>Declarative GitOps:</b> Git as Single Source of Truth for Kubernetes Cluster.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> <b>Automated Sync:</b> Self-Healing, Drift Detection & Automated Rollout.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> <b>Helm Packaging:</b> Helm Charts, values.yaml & Microservices deployments.</p>
-                        <p class="flex items-center gap-2"><i class="fas fa-check text-emerald-400 text-xs"></i> <b>Rollbacks:</b> One-click instant deployment rollback on failure.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION 3: FEATURED PRODUCTION PROJECTS (2 CARDS WITH MODALS) -->
-    <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
-        <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Featured DevOps Projects</h2>
-            <p class="text-slate-400">Click on any project to view full interactive pipeline flow & architecture</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            
-            <!-- PROJECT 1: THREE-TIER APP DEVSECOPS JENKINS PIPELINE -->
-            <div class="glass-card p-8 rounded-2xl border-t-4 border-t-blue-500 flex flex-col justify-between" data-aos="fade-right">
                 <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Production Ready</span>
-                        <div class="flex gap-2 text-lg">
-                            <i class="fab fa-aws text-amber-500" title="AWS"></i>
-                            <i class="devicon-kubernetes-plain colored" title="Kubernetes"></i>
-                            <i class="devicon-jenkins-line colored" title="Jenkins"></i>
-                            <i class="devicon-docker-plain colored" title="Docker"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Three-Tier Application DevSecOps Pipeline</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Designed and deployed an automated zero-downtime CI/CD pipeline using Jenkins Controller-Agent architecture. Integrated SonarQube code quality gates, Trivy container security scanning, Terraform EKS provisioning, and Prometheus/Grafana monitoring.
-                    </p>
-                </div>
-
-                <div class="space-y-3 pt-4 border-t border-slate-800">
-                    <button onclick="openModal('project1-modal')" class="w-full py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30">
-                        <i class="fas fa-project-diagram"></i> View Interactive Pipeline Flow
-                    </button>
-                    <a href="https://github.com/prafulgadbail" target="_blank" class="w-full py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-300 font-medium text-sm transition flex items-center justify-center gap-2">
-                        <i class="fab fa-github"></i> View GitHub Repository
+                    <a href="https://github.com/prafulgadbail/three-tier-student-registration-app" target="_blank" class="btn btn-primary" style="font-size: 0.85rem; padding: 8px 16px;">
+                        <i class="fa-brands fa-github"></i> GitHub Repository
                     </a>
                 </div>
             </div>
 
-            <!-- PROJECT 2: GITOPS MICROSERVICES WITH ARGOCD & GITHUB ACTIONS -->
-            <div class="glass-card p-8 rounded-2xl border-t-4 border-t-emerald-500 flex flex-col justify-between" data-aos="fade-left">
-                <div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">GitOps Standard</span>
-                        <div class="flex gap-2 text-lg">
-                            <i class="devicon-argocd-plain colored" title="ArgoCD"></i>
-                            <i class="devicon-githubactions-plain colored" title="GitHub Actions"></i>
-                            <i class="devicon-helm-plain colored" title="Helm"></i>
-                            <i class="fab fa-aws text-amber-500" title="AWS EKS"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">GitOps Microservices Deployment Engine</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-                        Built automated GitOps deployment pipeline using GitHub Actions for CI and ArgoCD for Continuous Delivery. Configured Helm Charts for Kubernetes manifests, automated drift detection, self-healing, and zero-downtime rolling updates on EKS.
-                    </p>
+            <!-- Project 2 (No GitHub Link, With Live Flow) -->
+            <div class="project-card">
+                <h3 class="project-title"><i class="fa-solid fa-code-branch"></i> GitOps Microservices Deployment</h3>
+                <div class="project-about">
+                    <strong>About Project:</strong> Multi-stage containerization of Java microservices using Docker Hub and GitHub Actions CI pipelines. Managed GitOps-based continuous deployment using Argo CD synchronizing manifests automatically with Kind Kubernetes cluster.
                 </div>
 
-                <div class="space-y-3 pt-4 border-t border-slate-800">
-                    <button onclick="openModal('project2-modal')" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/30">
-                        <i class="fas fa-sitemap"></i> View GitOps Architecture Flow
-                    </button>
-                    <!-- Link mark for future updates -->
-                    <a href="https://github.com/prafulgadbail" target="_blank" class="w-full py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-slate-300 font-medium text-sm transition flex items-center justify-center gap-2">
-                        <i class="fab fa-github"></i> View GitHub Repository
-                    </a>
+                <!-- Pipeline Flow -->
+                <div class="pipeline-container">
+                    <div class="pipeline-title">LIVE GITOPS DEPLOYMENT FLOW</div>
+                    <div class="pipeline-flow">
+                        <div class="pipeline-line"></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-brands fa-github"></i></div><span>Git Push</span></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-solid fa-play"></i></div><span>Actions</span></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-brands fa-docker"></i></div><span>Docker Hub</span></div>
+                        <div class="pipeline-step"><div class="pipeline-icon"><i class="fa-solid fa-sync"></i></div><span>Argo CD</span></div>
+                    </div>
+                </div>
+
+                <div class="tech-stack">
+                    <span class="tech-badge">GitHub Actions</span>
+                    <span class="tech-badge">Argo CD</span>
+                    <span class="tech-badge">Docker</span>
+                    <span class="tech-badge">Kind K8s</span>
+                    <span class="tech-badge">Helm</span>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- PROJECT 1 MODAL: JENKINS DEVSECOPS PIPELINE FLOW -->
-    <div id="project1-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="glass-card max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 border border-slate-700 relative">
-            <button onclick="closeModal('project1-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <h3 class="text-2xl font-bold text-blue-400 mb-2">Three-Tier Application — CI/CD Pipeline Flow</h3>
-            <p class="text-xs text-slate-400 mb-6">Live Execution Workflow: Developer Push ➔ Controller ➔ Agent Build ➔ Security Scan ➔ ECR ➔ EKS</p>
-
-            <!-- Animated Interactive Pipeline Diagram -->
-            <div class="space-y-4 text-xs font-mono">
-                <!-- Step 1 -->
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-blue-500/30 animated-node">
-                    <p class="text-blue-400 font-bold mb-1">1. DEVELOPER / SOURCE CONTROL</p>
-                    <p class="text-slate-300">Developer Git Push ➔ GitHub Webhook Triggered ➔ Jenkins Controller Notified</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-amber-500/30">
-                    <p class="text-amber-400 font-bold mb-1">2. JENKINS AUTOMATION SERVER</p>
-                    <p class="text-slate-300">Jenkins Controller assigns job to Jenkins Build Agent (Kubernetes Pod / EC2 Node)</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-purple-500/30">
-                    <p class="text-purple-400 font-bold mb-1">3. BACKEND & FRONTEND PIPELINE EXECUTION</p>
-                    <ul class="text-slate-300 space-y-1 mt-1 pl-2 border-l border-purple-500/40">
-                        <li>• Maven Build: <code class="text-amber-300">mvn clean package -DskipTests</code></li>
-                        <li>• SonarQube Code Quality & Gate Check Verification</li>
-                        <li>• Trivy Security Scan: Vulnerability Assessment</li>
-                        <li>• Docker Build & Push: Container Tagged & Pushed to Amazon ECR</li>
-                    </ul>
-                </div>
-                <!-- Step 4 -->
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-emerald-500/30">
-                    <p class="text-emerald-400 font-bold mb-1">4. AWS CLOUD DEPLOYMENT</p>
-                    <p class="text-slate-300">kubectl rollout ➔ Amazon EKS Cluster Deployment (Backend Pods) + S3 / CloudFront CDN (Frontend)</p>
-                </div>
-            </div>
-
-            <div class="mt-6 flex justify-end">
-                <button onclick="closeModal('project1-modal')" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-medium">Close Flow Diagram</button>
+    <!-- Contact Section -->
+    <section class="container" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p>I am available for immediate joining. Feel free to reach out via WhatsApp, Email, or LinkedIn!</p>
+            <div class="social-links">
+                <a href="https://wa.me/918087696782" target="_blank" class="social-icon" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="mailto:praful.gadbail01@gmail.com" class="social-icon" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/prafulgadbail" target="_blank" class="social-icon" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/prafulgadbail" target="_blank" class="social-icon" title="GitHub"><i class="fa-brands fa-github"></i></a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- PROJECT 2 MODAL: GITOPS ARGOCD FLOW -->
-    <div id="project2-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="glass-card max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-2xl p-6 border border-slate-700 relative">
-            <button onclick="closeModal('project2-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <h3 class="text-2xl font-bold text-emerald-400 mb-2">GitOps Microservices Deployment Architecture</h3>
-            <p class="text-xs text-slate-400 mb-6">Declarative Continuous Delivery with GitHub Actions, Helm & ArgoCD</p>
-
-            <div class="space-y-4 text-xs font-mono">
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-purple-500/30">
-                    <p class="text-purple-400 font-bold mb-1">1. DEVELOPER COMMIT & CI BUILD</p>
-                    <p class="text-slate-300">Code Commit ➔ GitHub Actions CI Pipeline Triggered ➔ Build & Push Image to ECR</p>
-                </div>
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-blue-500/30">
-                    <p class="text-blue-400 font-bold mb-1">2. GITOPS MANIFEST REPOSITORY UPDATE</p>
-                    <p class="text-slate-300">GitHub Actions updates image tag in Helm <code class="text-amber-300">values.yaml</code> in GitOps Repo</p>
-                </div>
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-emerald-500/30 animated-node">
-                    <p class="text-emerald-400 font-bold mb-1">3. ARGOCD AUTO-SYNC ENGINE</p>
-                    <p class="text-slate-300">ArgoCD detects Git drift ➔ Pulls updated Helm Chart ➔ Syncs EKS Cluster state</p>
-                </div>
-                <div class="p-4 bg-slate-900/80 rounded-xl border border-cyan-500/30">
-                    <p class="text-cyan-400 font-bold mb-1">4. ZERO-DOWNTIME ROLLING DEPLOYMENT</p>
-                    <p class="text-slate-300">Kubernetes EKS performs Zero-Downtime Rolling Update across Microservices</p>
-                </div>
-            </div>
-
-            <div class="mt-6 flex justify-end">
-                <button onclick="closeModal('project2-modal')" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-medium">Close Flow Diagram</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- CLEAN FOOTER (NO GITHUB PAGES MENTION) -->
-    <footer id="contact" class="py-12 border-t border-slate-800/80 text-center text-slate-400 text-sm">
-        <div class="max-w-6xl mx-auto px-6">
-            <p class="mb-2 font-medium text-slate-300">Designed & Maintained by <span class="text-white font-bold">PRAFUL GADBAIL</span></p>
-            <p class="text-xs text-slate-500">Cloud & DevOps Engineer Portfolio</p>
-        </div>
-    </footer>
-
-    <!-- JS Scripts for Smooth Animations & Interactive Modals -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: 'ease-out-cubic'
-        });
-
-        // Dropdown Toggle Logic
-        function toggleDropdown(contentId, arrowId) {
-            const content = document.getElementById(contentId);
-            const arrow = document.getElementById(arrowId);
-
-            content.classList.toggle('active');
-            arrow.classList.toggle('active');
-        }
-
-        // Modal Open / Close Logic
-        function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-    </script>
 </body>
 </html>
