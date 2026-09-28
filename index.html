@@ -35,6 +35,19 @@
             box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
         }
 
+        /* Animated Gradient Text */
+        .animated-gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #6366f1, #3b82f6);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: textShine 4s linear infinite;
+        }
+
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+
         /* Hover & Click Animated Expandable Dropdown */
         .expandable-card {
             position: relative;
@@ -48,7 +61,6 @@
             transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, margin-top 0.3s ease;
         }
 
-        /* Hover or Active State expands the menu automatically */
         .expandable-card:hover .expand-content,
         .expandable-card.active .expand-content {
             max-height: 800px;
@@ -86,9 +98,10 @@
             100% { filter: blur(10px) hue-rotate(360deg); }
         }
 
-        .terminal-box {
-            background-color: #030712;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+        /* Modal Blur */
+        .modal-backdrop {
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(8px);
         }
     </style>
 </head>
@@ -104,7 +117,7 @@
                 <a href="#about" class="hover:text-blue-400 transition">About</a>
                 <a href="#cloud-skills" class="hover:text-blue-400 transition">Cloud Stack</a>
                 <a href="#devops-skills" class="hover:text-blue-400 transition">DevOps Stack</a>
-                <a href="#projects" class="hover:text-blue-400 transition">Projects & Architecture</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Projects</a>
                 <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
             </div>
         </div>
@@ -115,14 +128,15 @@
         <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             
             <div data-aos="fade-right">
-                <span class="inline-block py-1 px-3 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-full text-xs font-semibold mb-4">
-                    🚀 Cloud & DevOps Engineer
-                </span>
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-2">Praful Gadbail</h1>
-                <h2 class="text-2xl font-semibold text-blue-400 mb-6">AWS & Kubernetes Specialist</h2>
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-2 text-white">Praful Gadbail</h1>
                 
-                <p class="text-slate-400 text-lg leading-relaxed mb-8">
-                    2.5+ years of experience in AWS Cloud Infrastructure, Infrastructure as Code (Terraform & Ansible), Container Orchestration (EKS/Kubernetes), Automated CI/CD Pipelines (Jenkins & ArgoCD GitOps), and Prometheus/Grafana Observability.
+                <!-- BADA & ANIMATED HEADING -->
+                <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-wide animated-gradient-text">
+                    CLOUD & DEVOPS ENGINEER
+                </h2>
+                
+                <p class="text-slate-400 text-base md:text-lg leading-relaxed mb-8">
+                    2.5+ years of experience in AWS Cloud Infrastructure, Infrastructure as Code (Terraform & Ansible), Container Orchestration (Kubernetes & EKS), Automated CI/CD Pipelines (Jenkins & ArgoCD GitOps), and Prometheus/Grafana Observability.
                 </p>
                 
                 <div class="flex flex-wrap gap-4 mb-8">
@@ -147,7 +161,7 @@
                 </div>
             </div>
 
-            <!-- Glowing Photo Frame -->
+            <!-- Profile Photo -->
             <div class="flex justify-center" data-aos="fade-left">
                 <div class="glow-avatar-wrapper">
                     <div class="relative w-72 h-80 md:w-80 md:h-96 rounded-2xl overflow-hidden glass-card border border-slate-700">
@@ -159,7 +173,7 @@
         </div>
     </section>
 
-    <!-- SECTION 1: CLOUD PROVIDERS (HOVER/CLICK DROPDOWN) -->
+    <!-- SECTION 1: CLOUD PROVIDERS -->
     <section id="cloud-skills" class="py-16 px-6 max-w-6xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-up">
             <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Cloud Platforms Stack</h2>
@@ -167,7 +181,6 @@
         </div>
 
         <div class="space-y-4">
-
             <!-- AWS CARD -->
             <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
                 <div class="flex justify-between items-center">
@@ -175,7 +188,7 @@
                         <i class="fab fa-aws text-4xl text-amber-500"></i>
                         <div>
                             <h3 class="text-xl font-bold text-white">Amazon Web Services (AWS)</h3>
-                            <p class="text-xs text-slate-400">Hover / Click to view AWS Compute, Network, Storage & Security</p>
+                            <p class="text-xs text-slate-400">Hover / Click to view AWS Services</p>
                         </div>
                     </div>
                     <i class="fas fa-chevron-down chevron-icon text-slate-400 text-lg"></i>
@@ -186,31 +199,28 @@
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                             <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-server mr-1"></i> Compute & Containers</h4>
                             <ul class="text-sm space-y-1.5 text-slate-300">
-                                <li>• AWS EC2 (Instance Types, Security Groups)</li>
-                                <li>• AWS EKS (Managed Kubernetes Cluster)</li>
-                                <li>• AWS ECS (Elastic Container Service)</li>
-                                <li>• AWS Lambda (Serverless Functions)</li>
+                                <li>• AWS EC2 (Instance Types, SG)</li>
+                                <li>• AWS EKS (Managed Kubernetes)</li>
+                                <li>• AWS ECS & Lambda</li>
                                 <li>• Auto Scaling Groups & Launch Templates</li>
                             </ul>
                         </div>
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                             <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-network-wired mr-1"></i> VPC & Security</h4>
                             <ul class="text-sm space-y-1.5 text-slate-300">
-                                <li>• VPC, Public/Private Subnets, NAT Gateways</li>
-                                <li>• Application (ALB) & Network Load Balancer</li>
+                                <li>• VPC, Subnets, NAT Gateways</li>
+                                <li>• ALB / NLB Load Balancers</li>
                                 <li>• IAM Roles, OIDC, Service Accounts</li>
-                                <li>• Route 53 (DNS Management)</li>
-                                <li>• AWS KMS & Secrets Manager</li>
+                                <li>• Route 53 & KMS Secrets Manager</li>
                             </ul>
                         </div>
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                             <h4 class="font-bold text-amber-400 mb-2 text-sm uppercase tracking-wider"><i class="fas fa-database mr-1"></i> Storage & Ops</h4>
                             <ul class="text-sm space-y-1.5 text-slate-300">
-                                <li>• Amazon S3 Buckets & Lifecycle Policies</li>
-                                <li>• EBS / EFS Persistent Volumes</li>
+                                <li>• Amazon S3 Buckets & Lifecycle</li>
+                                <li>• EBS / EFS Persistent Storage</li>
                                 <li>• Amazon RDS (PostgreSQL/MySQL)</li>
-                                <li>• Amazon ECR (Private Container Registry)</li>
-                                <li>• CloudWatch Alarms & CloudTrail Logs</li>
+                                <li>• Amazon ECR Container Registry</li>
                             </ul>
                         </div>
                     </div>
@@ -235,79 +245,34 @@
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                             <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">Compute & AKS</h4>
                             <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Azure Virtual Machines (VMs)</li>
+                                <li>• Azure Virtual Machines</li>
                                 <li>• Azure Kubernetes Service (AKS)</li>
-                                <li>• VM Scale Sets</li>
                             </ul>
                         </div>
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
                             <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">VNet & Identity</h4>
                             <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Virtual Networks (VNet) & Peering</li>
+                                <li>• Virtual Networks (VNet)</li>
                                 <li>• Azure Active Directory (Entra ID)</li>
-                                <li>• Network Security Groups (NSG)</li>
                             </ul>
                         </div>
                         <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">Storage & Registries</h4>
+                            <h4 class="font-bold text-blue-400 mb-2 text-sm uppercase">Storage</h4>
                             <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Azure Blob Storage</li>
-                                <li>• Azure Container Registry (ACR)</li>
-                                <li>• Azure DevOps Pipelines</li>
+                                <li>• Azure Blob Storage & ACR</li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- GCP CARD -->
-            <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-4">
-                        <i class="devicon-googlecloud-plain colored text-4xl"></i>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Google Cloud Platform (GCP)</h3>
-                            <p class="text-xs text-slate-400">Hover / Click to view GCP Services</p>
-                        </div>
-                    </div>
-                    <i class="fas fa-chevron-down chevron-icon text-slate-400 text-lg"></i>
-                </div>
-
-                <div class="expand-content border-t border-slate-800/80 pt-4">
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-red-400 mb-2 text-sm uppercase">Compute & GKE</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Compute Engine (VMs)</li>
-                                <li>• Google Kubernetes Engine (GKE)</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-red-400 mb-2 text-sm uppercase">Networking & IAM</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• VPC Networks & Firewall Rules</li>
-                                <li>• GCP IAM Service Accounts</li>
-                            </ul>
-                        </div>
-                        <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <h4 class="font-bold text-red-400 mb-2 text-sm uppercase">Storage</h4>
-                            <ul class="text-sm space-y-1 text-slate-300">
-                                <li>• Cloud Storage (GCS Buckets)</li>
-                                <li>• GCP Artifact Registry</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- SECTION 2: DEVOPS & KUBERNETES (HOVER/CLICK DROPDOWN) -->
+    <!-- SECTION 2: DEVOPS STACK -->
     <section id="devops-skills" class="py-16 px-6 max-w-6xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">DevOps & Automation Matrix</h2>
-            <p class="text-slate-400">Hover or click on any tool card to see deep architectural skills</p>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">DevOps & Automation Stack</h2>
+            <p class="text-slate-400">Hover or click on any tool card for details</p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -319,20 +284,16 @@
                         <i class="devicon-kubernetes-plain colored text-3xl"></i>
                         <div>
                             <h3 class="font-bold text-lg text-white">Kubernetes Orchestration</h3>
-                            <p class="text-xs text-slate-400">Hover / Click for Objects & Controller details</p>
+                            <p class="text-xs text-slate-400">Deployments, Pods, Ingress & HPA</p>
                         </div>
                     </div>
                     <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
                 </div>
-
                 <div class="expand-content border-t border-slate-800/80 pt-4">
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>Deployments & StatefulSets:</b> Stateless microservices and Stateful workloads.</li>
-                        <li>• <b>HPA (Horizontal Pod Autoscaler):</b> CPU/Memory metric-based pod auto-scaling.</li>
-                        <li>• <b>Ingress Controllers:</b> NGINX Ingress, Path Routing & TLS Cert-Manager.</li>
-                        <li>• <b>Networking:</b> ClusterIP, NodePort, LoadBalancer & CoreDNS.</li>
-                        <li>• <b>Storage:</b> Persistent Volumes (PV), PVC, StorageClasses & CSI Drivers.</li>
-                        <li>• <b>Config & Security:</b> ConfigMaps, Secrets, RBAC Roles & ServiceAccounts.</li>
+                        <li>• <b>Deployments & StatefulSets:</b> Stateless and Stateful workloads.</li>
+                        <li>• <b>HPA (Horizontal Pod Autoscaler):</b> CPU/Memory scaling.</li>
+                        <li>• <b>Ingress Controllers:</b> NGINX Ingress, Path Routing & TLS.</li>
                     </ul>
                 </div>
             </div>
@@ -344,19 +305,16 @@
                         <i class="devicon-jenkins-line colored text-3xl"></i>
                         <div>
                             <h3 class="font-bold text-lg text-white">Jenkins Automation Engine</h3>
-                            <p class="text-xs text-slate-400">Hover / Click for Controller-Agent Architecture</p>
+                            <p class="text-xs text-slate-400">Controller-Agent Architecture</p>
                         </div>
                     </div>
                     <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
                 </div>
-
                 <div class="expand-content border-t border-slate-800/80 pt-4">
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>Architecture:</b> Distributed Jenkins Controller & Agent/Node setup.</li>
-                        <li>• <b>Jenkinsfile:</b> Declarative & Scripted Pipelines stored in Git.</li>
-                        <li>• <b>Credentials:</b> Secret Text, SSH Keys, Token Binding & AWS IAM Credentials.</li>
-                        <li>• <b>Security Scanning:</b> SonarQube Code Quality & Trivy Container Image Scans.</li>
-                        <li>• <b>Triggers:</b> GitHub Webhooks, Poll SCM & Scheduled Cron Builds.</li>
+                        <li>• <b>Architecture:</b> Distributed Controller & Agent Node setup.</li>
+                        <li>• <b>Jenkinsfile:</b> Declarative & Scripted Pipelines.</li>
+                        <li>• <b>Security:</b> SonarQube Code Scanning & Trivy Image Scans.</li>
                     </ul>
                 </div>
             </div>
@@ -369,41 +327,36 @@
                         <i class="devicon-ansible-plain colored text-3xl"></i>
                         <div>
                             <h3 class="font-bold text-lg text-white">IaC: Terraform & Ansible</h3>
-                            <p class="text-xs text-slate-400">Hover / Click for State Management & Playbooks</p>
+                            <p class="text-xs text-slate-400">Modules, Remote Backend & Playbooks</p>
                         </div>
                     </div>
                     <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
                 </div>
-
                 <div class="expand-content border-t border-slate-800/80 pt-4">
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>Terraform Modules:</b> Modular code for VPC, EKS, EC2, RDS & S3.</li>
-                        <li>• <b>Remote Backend:</b> S3 State Storage with DynamoDB Table State Locking.</li>
-                        <li>• <b>Ansible Playbooks:</b> OS Configuration Management, Package Updates & Patching.</li>
-                        <li>• <b>Dynamic Inventory:</b> AWS EC2 Dynamic Inventory & SSH Configuration.</li>
+                        <li>• <b>Terraform Modules:</b> VPC, EKS, EC2, RDS & S3 infrastructure.</li>
+                        <li>• <b>State Management:</b> S3 State Storage with DynamoDB State Locking.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- ARGOCD GITOPS -->
+            <!-- ARGOCD & DOCKER HUB -->
             <div class="glass-card expandable-card rounded-2xl p-6" onclick="this.classList.toggle('active')">
                 <div class="flex justify-between items-center">
                     <div class="flex items-center gap-3">
                         <i class="devicon-argocd-plain colored text-3xl"></i>
+                        <i class="devicon-docker-plain colored text-3xl"></i>
                         <div>
-                            <h3 class="font-bold text-lg text-white">ArgoCD & GitOps CD</h3>
-                            <p class="text-xs text-slate-400">Hover / Click for Helm & Auto-Sync Workflow</p>
+                            <h3 class="font-bold text-lg text-white">ArgoCD & Docker Hub</h3>
+                            <p class="text-xs text-slate-400">GitOps CD & Image Registries</p>
                         </div>
                     </div>
                     <i class="fas fa-chevron-down chevron-icon text-slate-400"></i>
                 </div>
-
                 <div class="expand-content border-t border-slate-800/80 pt-4">
                     <ul class="space-y-2 text-sm text-slate-300">
-                        <li>• <b>GitOps Paradigm:</b> Git repository as the Single Source of Truth.</li>
-                        <li>• <b>Automated Sync:</b> Continuous Drift Detection, Auto-Heal & Deployment.</li>
-                        <li>• <b>Helm Integration:</b> Managing Kubernetes Manifests using Helm Charts.</li>
-                        <li>• <b>Zero Downtime:</b> Automated Rolling Updates and instant 1-Click Rollback.</li>
+                        <li>• <b>GitOps Paradigm:</b> Git repository as Single Source of Truth.</li>
+                        <li>• <b>Docker Hub:</b> Automated Image Push & Container Repositories.</li>
                     </ul>
                 </div>
             </div>
@@ -411,137 +364,185 @@
         </div>
     </section>
 
-    <!-- SECTION 3: PROJECTS WITH DIRECT INTEGRATED ARCHITECTURE PIPELINES -->
+    <!-- SECTION 3: PROJECTS (CLEAN CARDS WITH POPUP MODAL) -->
     <section id="projects" class="py-16 px-6 max-w-6xl mx-auto">
         <div class="text-center mb-12" data-aos="fade-up">
-            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Featured Live Projects & Workflows</h2>
-            <p class="text-slate-400">Each project incorporates its direct architecture diagram and pipeline flow below</p>
+            <h2 class="text-3xl font-extrabold tracking-tight text-white mb-2">Featured Live Projects</h2>
+            <p class="text-slate-400">Click on any project to open its interactive SVG Architecture & Flow</p>
         </div>
 
-        <div class="space-y-12">
+        <div class="grid md:grid-cols-2 gap-8">
 
-            <!-- PROJECT 1 -->
-            <div class="glass-card p-8 rounded-2xl border-t-4 border-t-blue-500" data-aos="fade-up">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Project 01</span>
-                        <h3 class="text-2xl font-bold text-white mt-1">3-Tier Web Application on AWS EKS Cluster</h3>
-                    </div>
-                    <a href="https://github.com/prafulgadbail" target="_blank" class="text-slate-400 hover:text-white text-2xl" title="View Source Code">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Designed and deployed a production-ready 3-tier application on AWS EKS. Utilized Terraform for infrastructure provisioning, NGINX Ingress Controller for domain routing, Cert-Manager for SSL certificates, and integrated Prometheus/Grafana for live cluster metric tracking and automated alerts.
-                </p>
-
-                <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-300 mb-8">
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">AWS EKS</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Terraform</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Helm</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Jenkins</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Prometheus</span>
-                </div>
-
-                <!-- DIRECT INTEGRATED PIPELINE FLOW FOR PROJECT 1 -->
-                <div class="bg-slate-950/80 p-6 rounded-xl border border-slate-800">
-                    <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <i class="fas fa-project-diagram"></i> Project 1 Architecture & CI/CD Flow
-                    </h4>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center">
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fab fa-git-alt text-orange-500 text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">1. Git Push</p>
-                            <p class="text-[10px] text-slate-400">Webhook Trigger</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fab fa-jenkins text-amber-500 text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">2. Jenkins</p>
-                            <p class="text-[10px] text-slate-400">Build & Test</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fas fa-shield-alt text-emerald-400 text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">3. Security</p>
-                            <p class="text-[10px] text-slate-400">SonarQube & Trivy</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fab fa-docker text-cyan-400 text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">4. AWS ECR</p>
-                            <p class="text-[10px] text-slate-400">Image Registry</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fas fa-dharmachakra text-blue-400 text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">5. AWS EKS</p>
-                            <p class="text-[10px] text-slate-400">Live Production</p>
-                        </div>
+            <!-- PROJECT 1 CARD -->
+            <div class="glass-card p-6 rounded-2xl border-t-4 border-t-blue-500 flex flex-col justify-between" data-aos="fade-up">
+                <div>
+                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Project 01</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">3-Tier Web Application on AWS EKS Cluster</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Production-ready 3-tier application deployed on AWS EKS with Terraform IaC, Jenkins CI/CD, SonarQube, Trivy, and Prometheus/Grafana monitoring.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-300 mb-6">
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">AWS EKS</span>
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Terraform</span>
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Jenkins</span>
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">AWS ECR</span>
                     </div>
                 </div>
+
+                <button onclick="openModal('project1-modal')" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-blue-600/20">
+                    <i class="fas fa-sitemap"></i> View Project 1 Architecture & Flow
+                </button>
             </div>
 
-            <!-- PROJECT 2 -->
-            <div class="glass-card p-8 rounded-2xl border-t-4 border-t-emerald-500" data-aos="fade-up" data-aos-delay="100">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Project 02</span>
-                        <h3 class="text-2xl font-bold text-white mt-1">GitOps Microservices Pipeline using ArgoCD</h3>
-                    </div>
-                    <a href="https://github.com/prafulgadbail" target="_blank" class="text-slate-400 hover:text-white text-2xl" title="View Source Code">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-
-                <p class="text-slate-300 text-sm leading-relaxed mb-6">
-                    Implemented an automated GitOps deployment workflow for microservices. Configured GitHub Actions to continuously build container images, scan for vulnerabilities, push to Amazon ECR, and update Helm manifests. Configured ArgoCD inside Kubernetes for continuous drift detection and zero-downtime deployments.
-                </p>
-
-                <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-300 mb-8">
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">ArgoCD</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">GitHub Actions</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Docker</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Kubernetes</span>
-                    <span class="px-3 py-1 bg-slate-800 border border-slate-700 rounded-md">Helm</span>
-                </div>
-
-                <!-- DIRECT INTEGRATED PIPELINE FLOW FOR PROJECT 2 -->
-                <div class="bg-slate-950/80 p-6 rounded-xl border border-slate-800">
-                    <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                        <i class="fas fa-code-branch"></i> Project 2 GitOps Continuous Delivery Workflow
-                    </h4>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 text-center">
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fab fa-github text-white text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">1. App Commit</p>
-                            <p class="text-[10px] text-slate-400">Source Repository</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="devicon-githubactions-plain colored text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">2. Actions</p>
-                            <p class="text-[10px] text-slate-400">CI Build & ECR Push</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="devicon-helm-original colored text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">3. Manifest Repo</p>
-                            <p class="text-[10px] text-slate-400">Helm Tag Update</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="devicon-argocd-plain colored text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">4. ArgoCD</p>
-                            <p class="text-[10px] text-slate-400">Auto Sync Cluster</p>
-                        </div>
-                        <div class="p-3 bg-slate-900/90 rounded-lg border border-slate-800">
-                            <i class="fas fa-check-circle text-emerald-400 text-2xl mb-1"></i>
-                            <p class="text-xs font-bold text-white">5. Deployment</p>
-                            <p class="text-[10px] text-slate-400">Zero-Downtime</p>
-                        </div>
+            <!-- PROJECT 2 CARD (Docker Hub & Kubernetes) -->
+            <div class="glass-card p-6 rounded-2xl border-t-4 border-t-emerald-500 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Project 02</span>
+                    <h3 class="text-xl font-bold text-white mt-1 mb-3">GitOps Pipeline with Docker Hub & Kubernetes</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                        Automated GitOps deployment workflow using GitHub Actions, Docker Hub container registry, ArgoCD GitOps operator, and Kubernetes Cluster.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold text-slate-300 mb-6">
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Kubernetes</span>
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">Docker Hub</span>
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">ArgoCD</span>
+                        <span class="px-2.5 py-1 bg-slate-800 border border-slate-700 rounded-md">GitHub Actions</span>
                     </div>
                 </div>
+
+                <button onclick="openModal('project2-modal')" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-sm rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+                    <i class="fas fa-sitemap"></i> View Project 2 Architecture & Flow
+                </button>
             </div>
 
         </div>
     </section>
+
+    <!-- PROJECT 1 POPUP MODAL -->
+    <div id="project1-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-backdrop p-4 overflow-y-auto">
+        <div class="glass-card max-w-4xl w-full rounded-2xl p-6 md:p-8 relative border border-blue-500/30 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('project1-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <span class="text-xs font-bold text-blue-400 uppercase tracking-widest">Project 01 Details</span>
+            <h3 class="text-2xl font-bold text-white mt-1 mb-4">AWS EKS 3-Tier Enterprise Pipeline Architecture</h3>
+
+            <p class="text-slate-300 text-sm mb-6">
+                This project establishes an end-to-end automated deployment pipeline. When developer pushes code to GitHub, Jenkins triggers build jobs, runs SonarQube quality analysis, performs Trivy vulnerability scans on Docker images, pushes the secure image to Amazon ECR, and deploys to AWS EKS via Helm charts.
+            </p>
+
+            <!-- REAL FLOW DIAGRAM (Interactive SVG Layout) -->
+            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
+                <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-6 flex items-center gap-2">
+                    <i class="fas fa-project-diagram"></i> Real Live CI/CD Pipeline Flow
+                </h4>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+                    <!-- Step 1 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-blue-500/40 w-full md:w-1/5">
+                        <i class="fab fa-github text-3xl text-white mb-2"></i>
+                        <p class="text-xs font-bold text-white">1. Developer Push</p>
+                        <p class="text-[10px] text-slate-400">GitHub Commit</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-blue-500 hidden md:block text-lg"></i>
+                    <i class="fas fa-arrow-down text-blue-500 md:hidden text-lg"></i>
+
+                    <!-- Step 2 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-amber-500/40 w-full md:w-1/5">
+                        <i class="fab fa-jenkins text-3xl text-amber-500 mb-2"></i>
+                        <p class="text-xs font-bold text-white">2. Jenkins CI</p>
+                        <p class="text-[10px] text-slate-400">SonarQube & Trivy</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-blue-500 hidden md:block text-lg"></i>
+                    <i class="fas fa-arrow-down text-blue-500 md:hidden text-lg"></i>
+
+                    <!-- Step 3 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-cyan-500/40 w-full md:w-1/5">
+                        <i class="fab fa-docker text-3xl text-cyan-400 mb-2"></i>
+                        <p class="text-xs font-bold text-white">3. AWS ECR</p>
+                        <p class="text-[10px] text-slate-400">Image Registry</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-blue-500 hidden md:block text-lg"></i>
+                    <i class="fas fa-arrow-down text-blue-500 md:hidden text-lg"></i>
+
+                    <!-- Step 4 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-purple-500/40 w-full md:w-1/5">
+                        <i class="fas fa-dharmachakra text-3xl text-purple-400 mb-2"></i>
+                        <p class="text-xs font-bold text-white">4. AWS EKS</p>
+                        <p class="text-[10px] text-slate-400">Kubernetes Pods</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="closeModal('project1-modal')" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECT 2 POPUP MODAL (Docker Hub + Kubernetes Flow) -->
+    <div id="project2-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center modal-backdrop p-4 overflow-y-auto">
+        <div class="glass-card max-w-4xl w-full rounded-2xl p-6 md:p-8 relative border border-emerald-500/30 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('project2-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Project 02 Details</span>
+            <h3 class="text-2xl font-bold text-white mt-1 mb-4">GitOps Pipeline with Docker Hub & Kubernetes</h3>
+
+            <p class="text-slate-300 text-sm mb-6">
+                Automated continuous delivery workflow. GitHub Actions builds the Docker image and pushes it directly to **Docker Hub**. Then, GitHub Actions updates the Helm values in the Manifest Repository. **ArgoCD** running inside the Kubernetes cluster detects drift and automatically syncs the live cluster with zero downtime.
+            </p>
+
+            <!-- REAL FLOW DIAGRAM (Interactive SVG Layout) -->
+            <div class="bg-slate-950 p-6 rounded-xl border border-slate-800 mb-6">
+                <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-6 flex items-center gap-2">
+                    <i class="fas fa-project-diagram"></i> Real Live GitOps Flow (Docker Hub & K8s)
+                </h4>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+                    <!-- Step 1 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-emerald-500/40 w-full md:w-1/5">
+                        <i class="devicon-githubactions-plain colored text-3xl mb-2"></i>
+                        <p class="text-xs font-bold text-white">1. GitHub Actions</p>
+                        <p class="text-[10px] text-slate-400">Build Container</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block text-lg"></i>
+                    <i class="fas fa-arrow-down text-emerald-500 md:hidden text-lg"></i>
+
+                    <!-- Step 2 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-blue-500/40 w-full md:w-1/5">
+                        <i class="fab fa-docker text-3xl text-blue-400 mb-2"></i>
+                        <p class="text-xs font-bold text-white">2. Docker Hub</p>
+                        <p class="text-[10px] text-slate-400">Push Image Tag</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block text-lg"></i>
+                    <i class="fas fa-arrow-down text-emerald-500 md:hidden text-lg"></i>
+
+                    <!-- Step 3 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-red-500/40 w-full md:w-1/5">
+                        <i class="devicon-argocd-plain colored text-3xl mb-2"></i>
+                        <p class="text-xs font-bold text-white">3. ArgoCD</p>
+                        <p class="text-[10px] text-slate-400">Detect Drift</p>
+                    </div>
+                    <i class="fas fa-arrow-right text-emerald-500 hidden md:block text-lg"></i>
+                    <i class="fas fa-arrow-down text-emerald-500 md:hidden text-lg"></i>
+
+                    <!-- Step 4 -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-cyan-500/40 w-full md:w-1/5">
+                        <i class="devicon-kubernetes-plain colored text-3xl mb-2"></i>
+                        <p class="text-xs font-bold text-white">4. Kubernetes</p>
+                        <p class="text-[10px] text-slate-400">Zero Downtime Sync</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end">
+                <button onclick="closeModal('project2-modal')" class="px-6 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="contact" class="py-12 border-t border-slate-800 text-center text-slate-400 text-sm">
@@ -551,14 +552,20 @@
         </div>
     </footer>
 
-    <!-- AOS JS -->
+    <!-- JS Scripts for Modal Popups & Animations -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-            easing: 'ease-out-cubic'
-        });
+        AOS.init({ duration: 800, once: true });
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
