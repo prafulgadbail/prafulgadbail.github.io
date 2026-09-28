@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Engineer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for 3D Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Config File -->
+    <script src="config.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; background-color: #0b0f19; color: #f8fafc; scroll-behavior: smooth; }
+        .glass { background: rgba(17, 24, 39, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow { box-shadow: 0 0 25px rgba(59, 130, 246, 0.4); }
+        .glow-hover:hover { box-shadow: 0 0 30px rgba(59, 130, 246, 0.7); transform: translateY(-5px); transition: all 0.3s ease; }
+        #canvas-container { width: 320px; height: 320px; cursor: grab; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100">
+
+    <!-- Header / Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass px-8 py-4 flex justify-between items-center border-b border-slate-800">
+        <h1 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent" id="nav-title">DevOps.Portfolio</h1>
+        <ul class="hidden md:flex space-x-6 text-sm font-medium">
+            <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+            <li><a href="#skills" class="hover:text-blue-400 transition">Skills</a></li>
+            <li><a href="#projects" class="hover:text-blue-400 transition">Projects</a></li>
+            <li><a href="#experience" class="hover:text-blue-400 transition">Experience</a></li>
+            <li><a href="#education" class="hover:text-blue-400 transition">Education</a></li>
+            <li><a href="#contact" class="hover:text-blue-400 transition">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <section id="about" class="min-h-screen flex flex-col md:flex-row items-center justify-center px-8 pt-24 max-w-6xl mx-auto gap-12">
+        <div class="md:w-1/2 space-y-6">
+            <h3 class="text-blue-400 font-medium">Hi, I'm</h3>
+            <h1 id="user-name" class="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-teal-300 to-indigo-500 bg-clip-text text-transparent"></h1>
+            <h2 id="user-role" class="text-2xl font-semibold text-slate-300"></h2>
+            <p id="user-bio" class="text-slate-400 leading-relaxed"></p>
+
+            <div class="flex flex-wrap gap-4 pt-2">
+                <a id="btn-projects" href="#projects" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl transition flex items-center gap-2 glow">
+                    <i class="fas fa-rocket"></i> Explore Projects
+                </a>
+                <a id="btn-resume" href="#" download class="border border-blue-500 text-blue-400 hover:bg-blue-500/10 font-medium px-6 py-3 rounded-xl transition flex items-center gap-2">
+                    <i class="fas fa-download"></i> Download Resume
+                </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex gap-6 pt-4 text-2xl text-slate-400">
+                <a id="link-github" href="#" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-github"></i></a>
+                <a id="link-linkedin" href="#" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <!-- 3D Photo Animated Cube -->
+        <div class="md:w-1/2 flex flex-col items-center justify-center">
+            <div id="canvas-container" class="rounded-2xl overflow-hidden glass p-2 glow"></div>
+            <p class="text-xs text-slate-500 mt-3"><i class="fas fa-mouse"></i> Click & Drag to Rotate 3D Photo Cube</p>
+        </div>
+    </section>
+
+    <!-- Skills Section (Proper Blocks Layout) -->
+    <section id="skills" class="py-20 px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Technical <span class="text-blue-400">Skills</span></h2>
+        <div id="skills-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Featured <span class="text-blue-400">Projects</span></h2>
+        <div id="projects-grid" class="grid md:grid-cols-2 gap-8"></div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12"><i class="fas fa-briefcase text-blue-400 mr-2"></i> Work <span class="text-blue-400">Experience</span></h2>
+        <div id="experience-list" class="space-y-6 max-w-3xl mx-auto"></div>
+    </section>
+
+    <!-- Education & Certifications Grid -->
+    <section id="education" class="py-20 px-8 max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+        <div>
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3"><i class="fas fa-graduation-cap text-teal-400"></i> Education</h2>
+            <div id="education-list" class="space-y-6"></div>
+        </div>
+        <div>
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3"><i class="fas fa-certificate text-amber-400"></i> Certifications</h2>
+            <div id="certifications-list" class="space-y-6"></div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer -->
+    <footer id="contact" class="glass mt-20 py-10 text-center border-t border-slate-800">
+        <h2 class="text-2xl font-bold mb-4">Let's Connect</h2>
+        <div class="flex justify-center gap-6 text-2xl text-slate-400 mb-6">
+            <a id="footer-github" href="#" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-github"></i></a>
+            <a id="footer-linkedin" href="#" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+            <a id="footer-email" href="#" class="hover:text-blue-400 transition"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="text-xs text-slate-500">© Cloud & DevOps Engineer Portfolio</p>
+    </footer>
+
+    <!-- Script to Load Data from config.js & Render 3D Scene -->
+    <script>
+        // Populate Data from PORTFOLIO_DATA
+        document.getElementById('user-name').innerText = PORTFOLIO_DATA.profile.name;
+        document.getElementById('user-role').innerText = PORTFOLIO_DATA.profile.role;
+        document.getElementById('user-bio').innerText = PORTFOLIO_DATA.profile.bio;
+        document.getElementById('btn-resume').href = PORTFOLIO_DATA.profile.resumeUrl;
+        document.getElementById('link-github').href = PORTFOLIO_DATA.profile.github;
+        document.getElementById('link-linkedin').href = PORTFOLIO_DATA.profile.linkedin;
+        document.getElementById('footer-github').href = PORTFOLIO_DATA.profile.github;
+        document.getElementById('footer-linkedin').href = PORTFOLIO_DATA.profile.linkedin;
+        document.getElementById('footer-email').href = "mailto:" + PORTFOLIO_DATA.profile.email;
+
+        // Render Skills Blocks
+        const skillsGrid = document.getElementById('skills-grid');
+        PORTFOLIO_DATA.skills.forEach(skill => {
+            skillsGrid.innerHTML += `
+                <div class="glass p-6 rounded-2xl text-center glow-hover flex flex-col items-center justify-center">
+                    <i class="${skill.icon} text-4xl ${skill.color} mb-3"></i>
+                    <h3 class="font-bold text-lg">${skill.name}</h3>
+                    <p class="text-xs text-slate-400 mt-1">${skill.category}</p>
+                </div>`;
+        });
+
+        // Render Projects
+        const projectsGrid = document.getElementById('projects-grid');
+        PORTFOLIO_DATA.projects.forEach(project => {
+            const tagsHTML = project.tags.map(tag => `<span class="text-xs bg-slate-800 px-2.5 py-1 rounded text-teal-300 border border-teal-500/20">${tag}</span>`).join(' ');
+            projectsGrid.innerHTML += `
+                <div class="glass p-6 rounded-2xl glow-hover flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-blue-300 mb-2">${project.title}</h3>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">${project.description}</p>
+                        <div class="flex flex-wrap gap-2 mb-6">${tagsHTML}</div>
+                    </div>
+                    <a href="${project.githubUrl}" target="_blank" class="inline-flex items-center text-sm text-blue-400 hover:text-blue-300 font-semibold gap-2">
+                        View Project on GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>`;
+        });
+
+        // Render Experience
+        const expList = document.getElementById('experience-list');
+        PORTFOLIO_DATA.experience.forEach(exp => {
+            expList.innerHTML += `
+                <div class="glass p-6 rounded-2xl border-l-4 border-blue-500 glow-hover">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">${exp.role}</h3>
+                            <p class="text-sm text-blue-400 font-medium">${exp.company} • ${exp.location}</p>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono bg-slate-800 px-3 py-1 rounded-full">${exp.duration}</span>
+                    </div>
+                    <p class="text-sm text-slate-300 mt-3">${exp.description}</p>
+                </div>`;
+        });
+
+        // Render Education
+        const eduList = document.getElementById('education-list');
+        PORTFOLIO_DATA.education.forEach(edu => {
+            eduList.innerHTML += `
+                <div class="glass p-5 rounded-xl border-l-4 border-teal-500">
+                    <span class="text-xs text-teal-400 font-mono">${edu.duration}</span>
+                    <h3 class="text-lg font-bold mt-1">${edu.degree}</h3>
+                    <p class="text-sm text-slate-400">${edu.institution}</p>
+                </div>`;
+        });
+
+        // Render Certifications
+        const certList = document.getElementById('certifications-list');
+        PORTFOLIO_DATA.certifications.forEach(cert => {
+            certList.innerHTML += `
+                <div class="glass p-5 rounded-xl flex items-center gap-4 glow-hover">
+                    <i class="fas fa-award text-3xl text-amber-400"></i>
+                    <div>
+                        <h3 class="font-bold">${cert.title}</h3>
+                        <p class="text-xs text-slate-400">${cert.issuer} (${cert.date})</p>
+                    </div>
+                </div>`;
+        });
+
+        // --- 3D Texture Photo Cube Code ---
+        const container = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(300, 300);
+        container.appendChild(renderer.domElement);
+
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.load(PORTFOLIO_DATA.profile.photoUrl, function(texture) {
+            const geometry = new THREE.BoxGeometry(2.2, 2.2, 2.2);
+            const material = new THREE.MeshBasicMaterial({ map: texture });
+            const cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
+            camera.position.z = 3.5;
+
+            let isDragging = false, previousMousePosition = { x: 0, y: 0 };
+            container.addEventListener('mousedown', () => isDragging = true);
+            container.addEventListener('mouseup', () => isDragging = false);
+            container.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    cube.rotation.y += (e.clientX - previousMousePosition.x) * 0.01;
+                    cube.rotation.x += (e.clientY - previousMousePosition.y) * 0.01;
+                }
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                if (!isDragging) { cube.rotation.y += 0.005; }
+                renderer.render(scene, camera);
+            }
+            animate();
+        });
+    </script>
+</body>
+</html>
