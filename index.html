@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Praful Gadbail | Cloud & DevOps Engineer</title>
 <meta name="description" content="Cloud & DevOps Engineer skilled in AWS, Terraform, Kubernetes, Jenkins and GitOps. Pune, India.">
+<meta name="theme-color" content="#0a1322">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Praful Gadbail | Cloud & DevOps Engineer">
+<meta property="og:description" content="AWS, Terraform, Kubernetes, Jenkins, GitOps — 2.5+ years building reliable cloud infrastructure.">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0a1322;--bg2:#101c31;--line:#1f3050;--tx:#e6edf7;--mut:#8fa3c2;--cy:#3dd9eb;--am:#ffb84d}
@@ -15,7 +20,8 @@ body.lock{overflow:hidden}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;cursor:pointer}
 .mono{font-family:'IBM Plex Mono',monospace}
-.wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 5vw}
+@media(min-width:1500px){.wrap{padding:0 6vw}}
 #boot{position:fixed;inset:0;background:#060c17;z-index:99;display:grid;place-items:center;transition:clip-path 1s cubic-bezier(.7,0,.2,1);clip-path:circle(150% at 50% 50%);cursor:pointer}
 #boot.done{clip-path:circle(0% at 50% 50%);pointer-events:none}
 #boot pre{font:14px/1.9 'IBM Plex Mono',monospace;color:var(--cy);min-width:min(460px,88vw)}
@@ -26,18 +32,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:20;backdrop-filter:blur(12px);ba
 nav .wrap{display:flex;justify-content:space-between;align-items:center;height:58px}
 nav b{font-weight:800}nav b span{color:var(--cy)}
 nav ul{display:flex;gap:22px;list-style:none;font-size:14px;color:var(--mut)}
-nav ul a:hover{color:var(--cy)}
+nav ul a{position:relative;padding:4px 0}
+nav ul a:after{content:'';position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--cy);transition:width .3s}
+nav ul a:hover,nav ul a.on{color:var(--cy)}
+nav ul a:hover:after,nav ul a.on:after{width:100%}
+#top{position:fixed;right:24px;bottom:24px;width:46px;height:46px;border-radius:50%;background:var(--cy);color:#04202a;display:grid;place-items:center;font-size:18px;border:none;opacity:0;pointer-events:none;transform:translateY(12px);transition:.3s;z-index:15;box-shadow:0 4px 18px #3dd9eb4d}
+#top.show{opacity:1;pointer-events:auto;transform:none}
+#top:hover{transform:translateY(-4px)}
 @media(max-width:640px){nav ul{gap:12px;font-size:12px}nav b{display:none}}
 header{min-height:100vh;display:flex;align-items:center;padding-top:70px;position:relative}
 #net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
 .hero{position:relative;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.pic{order:-1;margin:auto}}
-h1{font-size:clamp(38px,6vw,68px);line-height:1.05;font-weight:800;letter-spacing:-1.5px}
-.cd{font-size:clamp(22px,3.4vw,36px);font-weight:800;margin:8px 0 4px;background:linear-gradient(90deg,var(--cy),var(--am));-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content}
-.role{font:500 16px 'IBM Plex Mono',monospace;color:var(--mut);margin:6px 0 14px;min-height:26px}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.picwrap{order:-1;margin:auto}}
+h1{font-size:clamp(32px,4.6vw,52px);line-height:1.08;font-weight:800;letter-spacing:-1px}
+.cd{font-size:clamp(19px,2.4vw,27px);font-weight:800;margin:8px 0 4px;background:linear-gradient(90deg,var(--cy),var(--am));-webkit-background-clip:text;background-clip:text;color:transparent;width:fit-content}
+.role{font:500 15px 'IBM Plex Mono',monospace;color:var(--mut);margin:6px 0 14px;min-height:24px}
 .role:after{content:'▍';color:var(--cy);animation:bl 1s steps(1) infinite}
 @keyframes bl{50%{opacity:0}}
 .hero p.d{color:var(--mut);max-width:520px}
+.pitch{font-weight:700;font-size:16px;margin-top:12px;color:var(--tx);max-width:520px}
+.explore{display:inline-flex;align-items:center;gap:6px;font:12.5px 'IBM Plex Mono',monospace;color:var(--cy);background:#3dd9eb14;border:1px solid #3dd9eb44;border-radius:20px;padding:6px 14px;margin-top:14px}
 .btns{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
 .b{padding:11px 20px;border-radius:9px;font-weight:600;font-size:15px;border:1px solid var(--line);background:transparent;transition:.25s;display:inline-block}
 .b.p{background:var(--cy);color:#04202a;border-color:var(--cy)}
@@ -45,27 +59,46 @@ h1{font-size:clamp(38px,6vw,68px);line-height:1.05;font-weight:800;letter-spacin
 .b:not(.p):hover,.b.on{border-color:var(--cy);color:var(--cy)}
 .b.on{background:#3dd9eb14}
 .soc{display:flex;gap:12px;margin-top:22px}
-.pic{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;padding:5px;background:conic-gradient(from 0deg,var(--cy),var(--am),var(--cy));animation:spin 8s linear infinite}
+.picwrap{position:relative;width:min(300px,70vw);margin:auto;animation:float 4.5s ease-in-out infinite}
+.picwrap:before,.picwrap:after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1.5px solid var(--cy);opacity:0;animation:ring 3s ease-out infinite}
+.picwrap:after{animation-delay:1.5s;border-color:var(--am)}
+@keyframes ring{0%{transform:scale(.86);opacity:.7}100%{transform:scale(1.18);opacity:0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.pic{width:100%;aspect-ratio:1;border-radius:50%;padding:5px;background:conic-gradient(from 0deg,var(--cy),var(--am),var(--cy));animation:spin 8s linear infinite;box-shadow:0 0 40px #3dd9eb4d;position:relative}
 .pic>div{width:100%;height:100%;border-radius:50%;background:var(--bg2);overflow:hidden;display:grid;place-items:center;animation:spin 8s linear infinite reverse;font:800 64px 'Sora'}
-.pic img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.pic img{width:100%;height:100%;object-fit:contain;background:var(--bg2);transition:transform .5s}
+.picwrap:hover .pic img{transform:scale(1.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .stats{display:flex;gap:30px;margin-top:30px;flex-wrap:wrap}
 .stats div{font-size:13px;color:var(--mut)}.stats b{display:block;font-size:26px;color:var(--tx)}
 section{padding:90px 0}
-h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.8px;margin-bottom:34px}
+h2{font-size:clamp(24px,2.8vw,32px);font-weight:800;letter-spacing:-.5px;margin-bottom:34px}
 h2:after{content:'';display:block;width:56px;height:3px;background:var(--am);margin-top:10px;border-radius:2px}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
 .rv.in{opacity:1;transform:none}
 .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
-.sk{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .3s,transform .3s}
-.sk:hover{border-color:var(--cy);transform:translateY(-4px)}
-.sk h3{font-size:15px;margin-bottom:14px}
-.tag{display:inline-flex;align-items:center;gap:7px;font:12.5px 'IBM Plex Mono',monospace;border:1px solid var(--line);border-radius:8px;padding:4px 10px 4px 5px;margin:0 6px 8px 0;color:var(--tx);background:#0a1322;transition:.25s;opacity:0}
+.sk{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:16px 20px;transition:border-color .3s}
+.sk:hover{border-color:var(--cy)}
+.sk h3{font-size:14.5px;display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;padding:4px 0;user-select:none}
+.sk h3 .cnt{color:var(--mut);font-weight:400;font-size:12px;margin-right:auto;margin-left:10px}
+.sk h3 .chev{color:var(--cy);transition:transform .35s;font-size:12px}
+.sk.open h3 .chev{transform:rotate(180deg)}
+.sk .body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.sk.open .body{max-height:400px;padding-top:14px}
+.tag{display:inline-flex;align-items:center;gap:7px;font:12.5px 'IBM Plex Mono',monospace;border:1px solid var(--line);border-radius:8px;padding:4px 10px 4px 5px;margin:0 6px 8px 0;color:var(--tx);background:#0a1322;transition:border-color .25s,transform .25s}
 .tag:hover{border-color:var(--am);transform:translateY(-3px)}
-.tag img,.tag .em{width:22px;height:22px;border-radius:6px;background:#eef3fb;padding:2px;display:grid;place-items:center;font-size:14px;line-height:1}
-.in .tag{animation:pop .5s both;animation-delay:calc(var(--i)*70ms)}
+.tag img,.tag .em{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#f4f7fc,#e3ecf7);padding:2px;display:grid;place-items:center;font-size:14px;line-height:1;box-shadow:0 0 0 1px var(--line)}
+.sk.open .tag{animation:pop .45s both;animation-delay:calc(var(--i)*60ms)}
 @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.7)}to{opacity:1;transform:none}}
-.tl{position:relative;padding-left:34px}
+.edu{display:flex;align-items:center;gap:20px;background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px 28px;max-width:560px}
+.edu-ic{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,#3dd9eb22,#ffb84d22);display:grid;place-items:center;font-size:26px;border:1px solid var(--line);flex-shrink:0}
+.edu h3{font-size:18px}.edu .m{color:var(--am);font:13px 'IBM Plex Mono',monospace;margin-top:4px}
+.cert{display:flex;align-items:center;gap:20px;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px 26px;max-width:560px;transition:.3s}
+.cert:hover{border-color:var(--am);transform:translateY(-3px);box-shadow:0 8px 24px #ffb84d22}
+.cert img{width:74px;height:74px;border-radius:12px;object-fit:contain;background:#0a1322;padding:4px;flex-shrink:0}
+.cert h3{font-size:16px;color:var(--tx)}
+.cert .m{color:var(--mut);font:12.5px 'IBM Plex Mono',monospace;margin:4px 0 8px}
+.cert .cta{color:var(--cy);font:12.5px 'IBM Plex Mono',monospace}
 .tl:before{content:'';position:absolute;left:5px;top:0;bottom:0;width:2px;background:var(--line)}
 .tl .fill{position:absolute;left:5px;top:0;width:2px;height:0;background:linear-gradient(var(--cy),var(--am));box-shadow:0 0 12px var(--cy)}
 .job{position:relative;margin-bottom:38px;opacity:0;transform:translateX(-40px);transition:1s}
@@ -86,14 +119,16 @@ h2:after{content:'';display:block;width:56px;height:3px;background:var(--am);mar
 .nd{opacity:0;transform-box:fill-box;transform-origin:center;animation:np .5s both}
 @keyframes np{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
 .nd rect.n{fill:#0f1e38;stroke:var(--cy);stroke-width:1.4}
-.nd rect.lg{fill:#eef3fb}
+.nd rect.lg{fill:#eef3fb;stroke:var(--line);stroke-width:1}
 .fl{stroke:var(--cy);stroke-width:2;stroke-dasharray:5 5;opacity:0;animation:fin .4s forwards,dash 1s linear infinite}
 @keyframes fin{to{opacity:.8}}@keyframes dash{to{stroke-dashoffset:-10}}
 .dia text{fill:var(--tx);font:500 11px 'IBM Plex Mono',monospace;text-anchor:middle}
 .dia text.em{font-size:22px}
+.ghgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+.ghgrid img{width:100%;border-radius:14px;display:block}
 .ct{display:flex;gap:26px;flex-wrap:wrap}
 .ci{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:14px;color:var(--mut);transition:.3s}
-.ci .ico{width:72px;height:72px;border-radius:50%;background:#eef3fb;display:grid;place-items:center;font-size:32px;box-shadow:0 0 0 0 #3dd9eb00;transition:.3s}
+.ci .ico{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,#f4f7fc,#e3ecf7);display:grid;place-items:center;font-size:32px;box-shadow:0 0 0 1px var(--line);transition:.3s}
 .ci .ico img{width:40px;height:40px}
 .ci:hover{color:var(--am);transform:translateY(-6px)}
 .ci:hover .ico{box-shadow:0 0 0 6px #3dd9eb33,0 0 30px #3dd9eb66;transform:rotate(-8deg) scale(1.08)}
@@ -106,7 +141,8 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px}
 <div id="boot" title="Click to skip"><div><pre id="bt"></pre><div class="bar"><i id="bi"></i></div></div></div>
 
 <nav><div class="wrap"><b>praful<span>@devops</span></b>
-<ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#exp">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+<ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#exp">Experience</a></li><li><a href="#education">Education</a></li><li><a href="#projects">Projects</a></li><li><a href="#contact">Contact</a></li></ul></div></nav>
+<button id="top" title="Back to top" aria-label="Back to top">↑</button>
 
 <header id="about"><canvas id="net"></canvas>
 <div class="wrap hero">
@@ -116,6 +152,8 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px}
   <div class="cd">Cloud &amp; DevOps Engineer</div>
   <div class="role" id="role"></div>
   <p class="d">2.5+ years of experience in cloud infrastructure, CI/CD automation, Infrastructure as Code and Kubernetes deployments on AWS, Azure and GCP. Available for immediate joining.</p>
+  <p class="pitch">⚡ I turn manual deployments into one-click, self-healing pipelines.</p>
+  <div class="explore">🔭 Currently deepening: Kubernetes Operators &amp; GitOps at scale</div>
   <div class="btns">
    <a class="b p" href="assets/resume.pdf" download="Praful_Gadbail_Resume.pdf">⬇️ Download Resume</a>
    <a class="b" href="#projects">🚀 View Projects</a>
@@ -123,7 +161,7 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px}
   <div class="soc" id="soc"></div>
   <div class="stats"><div><b data-n="2.5" data-s="+">0</b>years experience</div><div><b data-n="5" data-s="+">0</b>Jenkins pipelines</div><div><b data-n="3">0</b>clouds: AWS, Azure, GCP</div><div><b data-n="10" data-s="+">0</b>Linux servers managed</div></div>
  </div>
- <div class="pic"><div><img src="assets/profile.jpg" alt="Praful Gadbail" onerror="ph(this)"></div></div>
+ <div class="picwrap"><div class="pic"><div><img src="assets/profile.jpg" alt="Praful Gadbail" onerror="ph(this)"></div></div></div>
 </div></header>
 
 <section id="skills"><div class="wrap"><h2 class="rv">🧰 Technical skills</h2><div class="skills" id="sk"></div></div></section>
@@ -139,8 +177,18 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px}
   <li>Built multi-AZ AWS infrastructure with Terraform: VPC, subnets, route tables, IGW, NAT, EC2, S3.</li>
   <li>Managed AWS IAM and Microsoft Entra ID; gave IT and network support to 1000+ users across India.</li>
   <li>Monitored with CloudWatch and Datadog; automated routine tasks with Shell and Python.</li></ul></div>
- <div class="job" data-e="🎓"><h3>B.Tech, Computer Science &amp; Engineering</h3><div class="m">Eklavya University, Damoh | 2021 - 2024</div></div>
 </div></div></section>
+
+<section id="education"><div class="wrap"><h2 class="rv">🎓 Education</h2>
+ <div class="edu rv"><div class="edu-ic">🎓</div><div><h3>B.Tech — Computer Science &amp; Engineering</h3><div class="m">Eklavya University, Damoh | 2021 - 2024</div></div></div>
+</div></section>
+
+<section id="certs" style="background:var(--bg2)"><div class="wrap"><h2 class="rv">🏆 Certifications</h2>
+ <a class="cert rv" href="https://www.credly.com/badges/2d88957e-7f14-4d3d-ba07-3857fe646225/public_url" target="_blank" rel="noopener">
+  <img src="https://images.credly.com/images/f5efafe6-ebdc-485c-9ffa-3a05533e634b/linkedin_thumb_blob" alt="AWS Knowledge: Amazon EKS - Training Badge" loading="lazy" onerror="this.outerHTML='<div style=\'font-size:40px\'>🏅</div>'">
+  <div><h3>AWS Knowledge: Amazon EKS — Training Badge</h3><div class="m">Issued by Amazon Web Services Training and Certification</div><div class="cta">View credential on Credly →</div></div>
+ </a>
+</div></section>
 
 <section id="projects"><div class="wrap"><h2 class="rv">🛠️ Projects</h2>
  <div class="proj rv"><h3>Three-Tier AWS EKS Deployment with Jenkins CI/CD</h3>
@@ -153,20 +201,30 @@ footer{text-align:center;color:var(--mut);font-size:13px;padding:30px}
   <div class="dia" id="p1d"><div class="sc"><svg></svg></div></div></div>
  <div class="proj rv"><h3>Microservices GitOps Deployment with GitHub Actions &amp; Argo CD</h3>
   <div class="ts" id="t2"></div>
-  <ul><li>Multi-stage Dockerfiles for Java microservices; versioned images pushed to Docker Hub.</li>
-  <li>GitHub Actions CI: checkout, Maven build, tests, image build, tagging and publish.</li>
-  <li>Argo CD keeps the Kind cluster in sync with Git; rolling updates and resource limits configured.</li></ul>
+  <ul><li>Containerized Java microservices with multi-stage Dockerfiles; published versioned images to Docker Hub for Kubernetes deployments.</li>
+  <li>Built GitHub Actions CI pipelines automating source checkout, Maven builds, application testing, Docker image builds/tagging and Docker Hub publishing.</li>
+  <li>Implemented GitOps-based deployments using Argo CD, managing manifests and continuously syncing desired state with a Kind Kubernetes cluster.</li>
+  <li>Configured Kubernetes Deployments, Services, ConfigMaps, Secrets and rolling updates on Kind, with Argo CD giving sync status and app health visibility.</li></ul>
   <div class="pb" id="p2b"></div><div class="hint">👆 Click to open the live diagram</div>
   <div class="dia" id="p2d"><div class="sc"><svg></svg></div></div></div>
+</div></section>
+
+<section id="github"><div class="wrap"><h2 class="rv">💻 GitHub Activity</h2>
+ <div class="ghgrid rv" id="ghgrid">
+  <div><img src="https://github-readme-stats.vercel.app/api?username=prafulgadbail&show_icons=true&hide_border=true&bg_color=101c31&title_color=3dd9eb&icon_color=ffb84d&text_color=e6edf7&hide=stars" alt="GitHub stats" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+  <div><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=prafulgadbail&layout=compact&hide_border=true&bg_color=101c31&title_color=3dd9eb&text_color=e6edf7" alt="Top languages" loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+ </div>
+ <div class="hint">Pulled live from GitHub — updates automatically as commits happen</div>
 </div></section>
 
 <section id="contact" style="background:var(--bg2)"><div class="wrap"><h2 class="rv">📬 Let's connect</h2><div class="ct rv" id="ct"></div></div></section>
 <footer>© Praful Gadbail | Pune, India</footer>
 
 <script>
+
 const D='https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/';
 // ===== EDIT HERE: contact + project links =====
-const C=[['✉️','Email','mailto:praful.gadbail01@gmail.com'],['📞','Call','tel:+918087696782'],['linkedin','LinkedIn','https://linkedin.com/in/prafulgadbail'],['github','GitHub','https://github.com/prafulgadbail']];
+const C=[['✉️','Gmail','https://mail.google.com/mail/?view=cm&fs=1&to=praful.gadbail01@gmail.com&su=Portfolio%20Contact'],['💬','WhatsApp','https://wa.me/918087696782'],['linkedin','LinkedIn','https://linkedin.com/in/prafulgadbail'],['github','GitHub','https://github.com/prafulgadbail']];
 const GH={p1:'https://github.com/prafulgadbail/three-tier-student-registration-app',p2:''}; // p2: paste GitOps repo link
 // ==============================================
 const isL=i=>/^[a-z0-9]+$/.test(i);
@@ -192,28 +250,29 @@ const S=[['☁️ Cloud Platforms',[['AWS','amazonwebservices'],['Azure','azure'
 ['🔷 Azure Services',[['VNet','🌐'],['NSG','🛡️'],['Entra ID','🪪'],['AKS','kubernetes'],['ACR','📦']]],
 ['🟢 GCP Services',[['VPC','🌐'],['Firewall Rules','🧱'],['GKE','kubernetes'],['Artifact Registry','📦']]],
 ['🏗️ Infrastructure as Code',[['Terraform','terraform'],['Modules','🧩'],['Remote Backend','🗄️'],['State Mgmt','📋']]],
-['🔁 CI/CD & GitOps',[['Jenkins','jenkins'],['GitHub Actions','githubactions'],['Argo CD','argocd'],['Pipelines','🚀']]],
-['🐳 Containers & Kubernetes',[['Docker','docker'],['Kubernetes','kubernetes'],['Helm','helm'],['Compose','🧱'],['Ingress','🚪'],['HPA','📈'],['kubectl','⌨️']]],
-['📊 Monitoring',[['CloudWatch','👁️'],['Prometheus','prometheus'],['Grafana','grafana'],['Datadog','datadog']]],
-['🛠️ Build & Quality',[['Maven','maven'],['npm','npm'],['SonarQube','sonarqube'],['Git','git'],['GitHub','github']]],
+['🔁 CI/CD & GitOps',[['Jenkins','jenkins'],['GitHub Actions','githubactions'],['Argo CD','🔄'],['Pipelines','🚀']]],
+['🐳 Containers & Kubernetes',[['Docker','docker'],['Kubernetes','kubernetes'],['Helm','⎈'],['Compose','🧱'],['Ingress','🚪'],['HPA','📈'],['kubectl','⌨️']]],
+['📊 Monitoring',[['CloudWatch','👁️'],['Prometheus','prometheus'],['Grafana','grafana'],['Datadog','🐶']]],
+['🛠️ Build & Quality',[['Maven','maven'],['npm','npm'],['SonarQube','🔍'],['Git','git'],['GitHub','github']]],
 ['🐧 Linux & Scripting',[['Linux','linux'],['Ubuntu','ubuntu'],['Bash','bash'],['Python','python']]],
 ['🌍 Networking',[['TCP/IP','🔌'],['DNS','🧭'],['HTTPS','🔒'],['SSH','🖧'],['Load Balancing','⚖️']]],
 ['🗃️ Databases',[['RDS PostgreSQL','postgresql'],['MariaDB','mariadb'],['DynamoDB','⚡'],['MongoDB Atlas','mongodb']]]];
-document.getElementById('sk').innerHTML=S.map(([k,v])=>`<div class="sk rv"><h3>${k}</h3>${v.map(([n,i],x)=>`<span class="tag" style="--i:${x}">${ic(i)}${n}</span>`).join('')}</div>`).join('');
-const T={t1:[['AWS EKS','kubernetes'],['Docker','docker'],['ECR','📦'],['Jenkins','jenkins'],['Maven','maven'],['SonarQube','sonarqube'],['S3','🪣'],['CloudFront','⚡'],['Route 53','🧭'],['ACM','🔒'],['Secrets Manager','🔑'],['Prometheus','prometheus'],['Grafana','grafana']],t2:[['Docker','docker'],['GitHub Actions','githubactions'],['Kubernetes','kubernetes'],['Argo CD','argocd'],['Helm','helm'],['GitOps','🔄']]};
+document.getElementById('sk').innerHTML=S.map(([k,v],ci)=>`<div class="sk${ci==0?' open':''}"><h3><span>${k}</span><span class="cnt">${v.length} skills</span><span class="chev">▾</span></h3><div class="body">${v.map(([n,i],x)=>`<span class="tag" style="--i:${x}">${ic(i)}${n}</span>`).join('')}</div></div>`).join('');
+document.querySelectorAll('#sk .sk h3').forEach(h=>h.onclick=()=>{const c=h.parentElement,wasOpen=c.classList.contains('open');c.classList.toggle('open');if(!wasOpen)c.querySelectorAll('.tag').forEach(t=>{t.style.animation='none';void t.offsetWidth;t.style.animation=''})});
+const T={t1:[['AWS EKS','kubernetes'],['Docker','docker'],['ECR','📦'],['Jenkins','jenkins'],['Maven','maven'],['SonarQube','🔍'],['S3','🪣'],['CloudFront','⚡'],['Route 53','🧭'],['ACM','🔒'],['Secrets Manager','🔑'],['Prometheus','prometheus'],['Grafana','grafana']],t2:[['Docker','docker'],['GitHub Actions','githubactions'],['Kubernetes','kubernetes'],['Argo CD','🔄'],['Helm','⎈'],['GitOps','🔄']]};
 for(const k in T)document.getElementById(k).innerHTML=T[k].map(([n,i])=>`<span class="tag" style="opacity:1">${ic(i)}${n}</span>`).join('');
 // diagrams
-const U=['👨‍💻','Developer'];
 const PR={p1:[['🎨 Frontend CI/CD',[['Developer','👨‍💻'],['GitHub','github'],['Jenkins','jenkins'],['npm Build','npm'],['S3 Bucket','🪣'],['CloudFront','⚡']]],
-['⚙️ Backend CI/CD',[['Developer','👨‍💻'],['GitHub','github'],['Jenkins','jenkins'],['Maven','maven'],['SonarQube','sonarqube'],['Docker','docker'],['ECR','📦'],['EKS Deploy','kubernetes']]],
+['⚙️ Backend CI/CD',[['Developer','👨‍💻'],['GitHub','github'],['Jenkins','jenkins'],['Maven','maven'],['SonarQube','🔍'],['Docker','docker'],['ECR','📦'],['EKS Deploy','kubernetes']]],
 ['🏛️ Architecture',[['Users','🌍'],['Route 53','🧭'],['ALB + ACM','⚖️'],['EKS Pods','kubernetes'],['Ext Secrets','🔑'],['Database','🗄️']]]],
-p2:[['🔄 GitOps Flow',[['Developer','👨‍💻'],['GitHub','github'],['GitHub Actions','githubactions'],['Docker Hub','docker'],['Argo CD','argocd'],['Kind Cluster','kubernetes']]]]};
-function dia(s,nodes){const w=104,g=36,W=nodes.length*(w+g)-g+20,y=52,d=.4;s.setAttribute('viewBox',`0 0 ${W} 110`);let h='';
+p2:[['🔄 GitOps Flow',[['Developer','👨‍💻'],['GitHub','github'],['GitHub Actions','githubactions'],['Docker Hub','docker'],['Argo CD','🔄'],['Kind Cluster','kubernetes']]]]};
+function dia(s,nodes){const w=110,g=40,W=nodes.length*(w+g)-g+20,y=54,d=.4;s.setAttribute('viewBox',`0 0 ${W} 118`);
+let h=`<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--am)"/></marker></defs>`;
 nodes.forEach(([l,i],k)=>{const x=10+k*(w+g),t=k*d,cx=x+w/2;
-if(k)h+=`<line class="fl" style="animation-delay:${t-.2}s,0s" x1="${x-g+2}" y1="${y}" x2="${x-2}" y2="${y}"/>`;
-h+=`<g class="nd" style="animation-delay:${t}s"><rect class="n" x="${x}" y="${y-32}" width="${w}" height="66" rx="12"/>`;
+if(k)h+=`<line class="fl" marker-end="url(#ah)" style="animation-delay:${t-.2}s,0s" x1="${x-g+3}" y1="${y}" x2="${x-9}" y2="${y}"/>`;
+h+=`<g class="nd" style="animation-delay:${t}s"><rect class="n" x="${x}" y="${y-32}" width="${w}" height="70" rx="12"/>`;
 h+=isL(i)?`<rect class="lg" x="${cx-17}" y="${y-27}" width="34" height="34" rx="8"/><image data-i="${i}" href="${D}${i}/${i}-original.svg" x="${cx-13}" y="${y-23}" width="26" height="26" onerror="fb(this)"/>`:`<text class="em" x="${cx}" y="${y-2}">${i}</text>`;
-h+=`<text x="${cx}" y="${y+26}">${l}</text></g>`});
+h+=`<text x="${cx}" y="${y+24}">${l}</text><text x="${cx}" y="${y+36}" style="font-size:9px;fill:var(--mut)">Step ${k+1}</text></g>`});
 const n=nodes.length;h+=`<circle r="6" fill="#ffb84d" opacity="0"><set attributeName="opacity" to="1" begin="${n*d}s" fill="freeze"/><animateMotion begin="${n*d}s" dur="${n*.8}s" repeatCount="indefinite" path="M10,${y} H${W-10}"/></circle>`;s.innerHTML=h}
 for(const p in PR){const bx=document.getElementById(p+'b'),box=document.getElementById(p+'d');
 bx.innerHTML=PR[p].map(([t],k)=>`<button class="b" data-k="${k}">${t}</button>`).join('')+(GH[p]?`<a class="b" href="${GH[p]}" target="_blank" rel="noopener">🔗 GitHub</a>`:'');
@@ -229,6 +288,15 @@ const cv=document.getElementById('net'),cx=cv.getContext('2d');let P=[];
 function rs(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;P=Array.from({length:Math.min(55,cv.width/22)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}
 rs();addEventListener('resize',rs);
 (function an(){cx.clearRect(0,0,cv.width,cv.height);P.forEach((p,i)=>{p.x=(p.x+p.vx+cv.width)%cv.width;p.y=(p.y+p.vy+cv.height)%cv.height;cx.fillStyle='#3dd9eb';cx.fillRect(p.x,p.y,2,2);for(let j=i+1;j<P.length;j++){const q=P[j],dd=Math.hypot(p.x-q.x,p.y-q.y);if(dd<130){cx.strokeStyle=`rgba(61,217,235,${.25*(1-dd/130)})`;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke()}}});requestAnimationFrame(an)})();
+// scrollspy + back-to-top
+const navA=[...document.querySelectorAll('nav ul a')],secs=navA.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const topBtn=document.getElementById('top');
+function onScroll(){const y=scrollY+120;let cur=secs[0];secs.forEach(s=>{if(s.offsetTop<=y)cur=s});
+navA.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur.id));
+topBtn.classList.toggle('show',scrollY>500)}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
 </script>
 </body>
 </html>
